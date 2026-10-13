@@ -1,21 +1,33 @@
 """Breadth-first search (BFS) - uninformed."""
 
+from collections import deque
+
 from ..node import Node, SearchResult, expand
 
 
 def bfs(problem):
-    """Run BFS on `problem` and return a SearchResult.
-
-    Expand all options one level at a time.
-
-    Hints:
-      * Frontier is a FIFO queue (collections.deque). Children are added in
-        ascending order, which gives the required tie-breaking for free.
-      * Decide whether to goal-test when a node is generated or when it is
-        expanded - it changes number_of_nodes. Be consistent across methods.
-    """
     root = Node(problem.origin)
     nodes_created = 1
 
-    # TODO: implement
-    raise NotImplementedError("BFS is not implemented yet")
+    # Goal test on generation: the first goal generated is at the shallowest
+    # depth, so there is no need to wait until it is expanded.
+    if problem.is_goal(root.state):
+        return SearchResult(root, nodes_created)
+
+    frontier = deque([root])      # FIFO queue
+    reached = {root.state}        # graph search: never revisit a state
+
+    while frontier:
+        node = frontier.popleft()
+        # Children come out in ascending order, so ties between nodes on the
+        # same level are broken by smaller id, then insertion order (NOTE 2).
+        for child in expand(problem, node):
+            if child.state in reached:
+                continue
+            nodes_created += 1
+            if problem.is_goal(child.state):
+                return SearchResult(child, nodes_created)
+            reached.add(child.state)
+            frontier.append(child)
+
+    return SearchResult(None, nodes_created)

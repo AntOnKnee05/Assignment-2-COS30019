@@ -51,7 +51,7 @@ python -m unittest discover tests
 | `route_finding/algorithms/astar.py` | A* search | **TODO** |
 | `route_finding/algorithms/cus1.py` | Custom uninformed search | **TODO** |
 | `route_finding/algorithms/cus2.py` | Custom informed search (fewest moves) | **TODO** |
-| `tests/cases/` | Problem files (need **at least 15**) | 7 so far |
+| `tests/cases/` | Problem files (need **at least 15**), described in `tests/cases/README.md` | 15 – done |
 | `run_tests.py` | Batch runner / results table | done |
 
 Each algorithm takes a `RouteProblem` and returns `SearchResult(goal_node_or_None, nodes_created)`.
@@ -71,7 +71,7 @@ The stubs contain hints for each method.
 ## Deliverables checklist
 
 - [ ] All 6 methods working (10 marks each)
-- [ ] ≥ 15 test cases covering different scenarios, results documented (10)
+- [~] ≥ 15 test cases covering different scenarios (done), results documented (10)
 - [ ] Report, 8–10 pages excl. cover/TOC, named `<TeamID>.pdf` (20)
   - cover page with names, IDs, signatures, contribution statement · TOC · instructions · introduction ·
     features/bugs/missing · testing · insights (with data) · research · conclusion ·
