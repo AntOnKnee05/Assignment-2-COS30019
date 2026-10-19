@@ -43,9 +43,9 @@ def check(problem, method, result, best_cost, best_moves):
         cost += edges[target]
     assert math.isclose(cost, result.goal.path_cost)
     assert result.goal.depth == len(path) - 1
-    if method in ('AS', 'CUS1'):
+    if method == 'AS':
         assert math.isclose(cost, best_cost), 'Nonoptimal cost'
-    if method in ('BFS', 'CUS2'):
+    if method in ('BFS', 'CUS1', 'CUS2'):
         assert result.goal.depth == best_moves, 'Nonoptimal move count'
 
 
@@ -88,11 +88,11 @@ def main():
              'A missing route is a correct outcome for the deliberately unreachable case.', '',
              '## Measurement method', '',
              f'- Timing: median of {REPEATS} runs after one warm-up; input parsing excluded.',
-             '- Nodes: every created search Node, including root and rejected children.',
+             '- Nodes: every created search Node, including root and rejected children; IDDFS/IDA* include regenerated roots and children across all iterations.',
              '- Cost: sum of directed edge costs; moves: number of edges in the route.',
              '- Reachability, route edges and reported costs checked for all methods.',
-             '- Bellman-Ford reference checks minimum cost for AS/CUS1 and minimum moves for BFS/CUS2.',
-             '- BFS uses global duplicate suppression and goal tests on generation; other methods use path cycle checks and goal tests on removal.',
+             '- Bellman-Ford reference checks minimum cost for AS and minimum moves for BFS/CUS1/CUS2.',
+             '- BFS uses global duplicate suppression and goal tests on generation; other methods use path cycle checks; custom methods use depth-first iterations within limits.',
              '- These comparisons describe the implemented variants, not isolated algorithm effects.',
              '- Small timings are sensitive to system load; memory usage was not measured.',
              '- Fifteen small cases do not establish general scalability or a universal fastest method.', '',
@@ -103,10 +103,10 @@ def main():
         if r['case'].startswith('test01_'):
             lines.append(f"| {r['method']} | {' -> '.join(map(str, r['path']))} | {r['cost']} | {r['moves']} | {r['nodes_created']} |")
     lines += ['', '## Useful findings for the report', '',
-              '- Cheap-long versus expensive-short: compare BFS/CUS2 with AS/CUS1 to explain moves versus cost.',
+              '- Cheap-long versus expensive-short: compare BFS/CUS1/CUS2 with AS to explain moves versus cost.',
               '- Greedy trap: GBFS chooses a route costing 34; a cheapest route costs 18.',
               '- Misleading geometry: scaled A* still finds cost 2 despite raw Euclidean distance overestimating.',
-              '- Grid: compare created-node counts for AS and CUS1 to discuss heuristic guidance.',
+              '- Grid: compare IDDFS and IDA* counts to discuss repeated work and heuristic guidance; they target moves, unlike AS.',
               '- Unreachable case: all methods must return no route; that is not an algorithm failure.',
               '- Original BFS example count was 4; corrected count is 5 because a generated duplicate also creates a Node.', '',
               '## Complete measured results', '',

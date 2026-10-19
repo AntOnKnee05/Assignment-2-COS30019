@@ -49,13 +49,13 @@ python -m unittest discover tests
 | `route_finding/algorithms/bfs.py` | Breadth-first search | implemented and tested |
 | `route_finding/algorithms/gbfs.py` | Greedy best-first search | implemented and tested |
 | `route_finding/algorithms/astar.py` | A* search | implemented and tested |
-| `route_finding/algorithms/cus1.py` | Uniform-cost search | implemented and tested |
-| `route_finding/algorithms/cus2.py` | A* on move count | implemented and tested |
+| `route_finding/algorithms/cus1.py` | IDDFS | implemented and tested |
+| `route_finding/algorithms/cus2.py` | IDA* for fewest moves | implemented and tested |
 | `tests/cases/` | Problem files (need **at least 15**), described in `tests/cases/README.md` | 15 – done |
 | `run_tests.py` | Batch runner / results table | done |
 
 Each algorithm takes a `RouteProblem` and returns `SearchResult(goal_node_or_None, nodes_created)`.
-The stubs contain hints for each method.
+CUS1 is IDDFS; CUS2 is IDA* for fewest moves.
 
 ## Decisions to agree on as a team (and state in the report)
 
@@ -129,50 +129,46 @@ The example returns 2 3 5, cost 10, with 9 nodes created. A* results on all
 15 fixtures are checked against independent Bellman-Ford minimum costs,
 including unreachable goals and a case where raw Euclidean h overestimates.
 
-## CUS1: uniform-cost search
+## CUS1: iterative deepening depth-first search
 
-CUS1 prioritizes g(n), the total edge cost already paid, without consulting
-coordinates or a heuristic. For finite graphs with finite nonnegative edge
-costs it returns a minimum-cost route to any destination, testing goals only
-when removed from the priority queue. It uses path cycle checking, counts
-all created Nodes (including the root and rejected cycle nodes), and uses
-insertion-order ties with ascending sibling insertion, matching AS/GBFS.
-This tree-search approach may explore many alternative paths and use large
-amounts of memory. It does not minimize the number of moves.
+CUS1 is IDDFS: run ascending depth limits starting at zero. Each pass uses
+ascending-child DFS with ancestor cycle checks. A boundary is a cutoff only
+if it has a successor outside the current path. Stop when a pass has no
+cutoff, or after the maximum simple-path depth V-1. Unreachable graphs
+therefore terminate. Iterator frames avoid Python recursion.
 
-On the supplied example CUS1 returns 2 1 4, cost 10, with 15 created nodes.
-The A* route 2 3 5 has the same minimum cost. Tests compare CUS1 against an
-independent Bellman-Ford cost oracle on all 15 fixtures and also cover
-zero-cost cycles, equal-cost ties, origin-at-goal, goal-test timing,
-coordinate independence, and cheaper routes requiring more moves.
+IDDFS minimizes moves, not travel cost. Every constructed Node counts,
+including each pass's root, regenerated children and rejected cycles.
+Boundary checks inspect successor labels without constructing child Nodes.
+On the supplied example the result is 2 1 4, cost 10, with 8 created nodes.
 
-## CUS2: informed search for fewest moves
+## CUS2: iterative deepening A star
 
-CUS2 uses A* with g(n) = node depth and h(n) = Euclidean distance to the
-nearest goal divided by the longest geometric edge length in the graph.
-Since one move can cover at most that length, the estimate is a lower bound
-on moves remaining. If all edges have zero length or there are no edges,
-h is zero. Input coordinates are assumed finite. Travel costs are recorded
-but do not affect priority: a route with fewer moves may cost more.
+CUS2 is IDA* for fewest moves. Its f value is depth plus straight-line
+distance to the nearest destination divided by the longest geometric edge.
+Use zero when no positive-length edge exists. The initial threshold is h at
+the origin; the next is the smallest f exceeding the previous threshold.
+A pass with no exceeded threshold and no goal means the search is exhausted.
 
-Goals are tested when popped. Path cycle checking, created-node counts and
-priority ties match AS. Searching alternative simple paths can be expensive
-on large graphs. Tests compare minimum moves with an independent breadth-
-first distance calculation on all 15 fixtures; additional cases cover zero
-lengths, no edges, cycles, goal origins, geometry-based priorities and ties.
-All six methods now run through the 15 supplied cases (90 method/case runs).
-BFS now counts every created Node, including rejected repeats and the root,
-matching the other methods. BFS still uses a global reached set and tests
-goals on generation; the others use path cycle checking and test goals on
-removal. Performance comparisons therefore describe these implementations,
-not just differences between textbook search strategies.
+Each pass uses ascending-child DFS with path cycle checks and iterator
+frames, not a priority queue. Test a goal only after its f fits the threshold.
+Count every constructed Node across all passes, including repeated roots,
+threshold rejections and cycle rejections. Costs are recorded, not optimized.
+On the supplied example the result is 2 1 4, cost 10, with 23 created nodes.
 
+Both custom methods may repeat substantial work on large graphs. BFS uses a
+global reached set while these methods use path checks; comparisons describe
+these actual implementations. Tests cover minimum moves, counting actual
+Node constructions, repeated passes, unreachable cycles, threshold jumps,
+and an IDA* path longer than Python's usual recursion limit.
 
 ## Reproducible report evidence
 
 Run `python benchmark_report.py` to validate all 90 method/case combinations
 and write `results/comparison.md` and `results/benchmark.json`. It checks
-reachability and route validity for every method, minimum cost for AS/CUS1,
-and minimum moves for BFS/CUS2 using independent reference calculations.
+reachability and route validity for every method, minimum cost for AS,
+and minimum moves for BFS/CUS1/CUS2 using independent reference calculations.
 Timing is the median of 30 runs after a warm-up, excluding input parsing.
 The Markdown summary records interpretation limits and selected comparisons.
+
+The earlier Word report draft predates the IDDFS/IDA* replacements. Its custom-method descriptions and measured comparisons need revision before submission.

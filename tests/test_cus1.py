@@ -1,5 +1,6 @@
-"""Compare uniform-cost search against independent Bellman-Ford shortest-path costs."""
+"""IDDFS minimum-move checks independent of the repository BFS method."""
 
+from collections import deque
 from pathlib import Path
 import unittest
 
@@ -8,27 +9,29 @@ from route_finding.problem import RouteProblem
 from route_finding.algorithms.cus1 import cus1
 
 
-class UniformCostTests(unittest.TestCase):
-    def test_all_fifteen_cases_have_optimal_cost(self):
+class IDDFSTests(unittest.TestCase):
+    def test_all_fifteen_fixtures_minimize_moves(self):
         cases = sorted((Path(__file__).parent / 'cases').glob('test*.txt'))
         self.assertGreaterEqual(len(cases), 15)
         for case in cases:
             with self.subTest(case=case.name):
                 problem = parse_problem(case)
-                distances = dict.fromkeys(problem.nodes, float('inf'))
-                distances[problem.origin] = 0
-                for _ in range(len(problem.nodes) - 1):
-                    for source in problem.nodes:
-                        for target, cost in problem.successors(source):
-                            distances[target] = min(distances[target],
-                                                    distances[source] + cost)
-                optimum = min(distances[g] for g in problem.destinations)
+                depths = {problem.origin: 0}
+                queue = deque([problem.origin])
+                while queue:
+                    source = queue.popleft()
+                    for target, _ in problem.successors(source):
+                        if target not in depths:
+                            depths[target] = depths[source] + 1
+                            queue.append(target)
+                optimum = min((depths[g] for g in problem.destinations
+                               if g in depths), default=None)
                 result = cus1(problem)
-                if optimum == float('inf'):
+                if optimum is None:
                     self.assertIsNone(result.goal)
                     continue
                 self.assertIsNotNone(result.goal)
-                self.assertAlmostEqual(result.goal.path_cost, optimum)
+                self.assertEqual(result.goal.depth, optimum)
                 path = result.goal.path()
                 self.assertEqual(path[0], problem.origin)
                 self.assertIn(path[-1], problem.destinations)
@@ -38,46 +41,35 @@ class UniformCostTests(unittest.TestCase):
                     edges = dict(problem.successors(source))
                     self.assertIn(target, edges)
                     total += edges[target]
-                self.assertAlmostEqual(total, optimum)
+                self.assertAlmostEqual(result.goal.path_cost, total)
 
-    def test_goal_is_checked_on_removal(self):
-        problem = RouteProblem({i: (0, 0) for i in [1, 2, 3]},
-                               [(1, 3, 10), (1, 2, 1), (2, 3, 1)], 1, {3})
-        result = cus1(problem)
-        self.assertEqual(result.goal.path(), [1, 2, 3])
-        self.assertEqual(result.goal.path_cost, 2)
-        self.assertEqual(result.nodes_created, 4)
-
-    def test_prefers_cheaper_route_over_fewer_moves(self):
+    def test_fewer_moves_even_when_more_expensive(self):
         problem = parse_problem(Path(__file__).parent / 'cases/test06_cheap_long_vs_short_expensive.txt')
         result = cus1(problem)
-        self.assertEqual(result.goal.path(), [1, 2, 3, 4])
-        self.assertEqual(result.goal.path_cost, 3)
+        self.assertEqual(result.goal.path(), [1, 5, 4])
+        self.assertEqual(result.goal.depth, 2)
+        self.assertEqual(result.goal.path_cost, 40)
 
-    def test_coordinates_do_not_affect_search(self):
-        edges = [(1, 2, 1), (1, 3, 9), (2, 3, 1)]
-        first = RouteProblem({i: (0, 0) for i in [1, 2, 3]}, edges, 1, {3})
-        second = RouteProblem({i: (i * 1000, -i) for i in [1, 2, 3]}, edges, 1, {3})
-        a, b = cus1(first), cus1(second)
-        self.assertEqual(a.goal.path(), b.goal.path())
-        self.assertEqual(a.nodes_created, b.nodes_created)
-
-    def test_zero_cost_cycle(self):
-        problem = RouteProblem({i: (i, 0) for i in [1, 2, 3]},
-                               [(1, 2, 0), (2, 1, 0), (2, 3, 0)], 1, {3})
-        result = cus1(problem)
-        self.assertEqual(result.goal.path(), [1, 2, 3])
-        self.assertEqual(result.goal.path_cost, 0)
-        self.assertEqual(result.nodes_created, 4)
-
-    def test_origin_goal(self):
+    def test_origin_goal_without_edges(self):
         result = cus1(RouteProblem({1: (0, 0)}, [], 1, {1}))
         self.assertEqual(result.goal.path(), [1])
         self.assertEqual(result.nodes_created, 1)
 
-    def test_equal_priorities_preserve_sibling_order(self):
+    def test_no_edges_unreachable(self):
+        result = cus1(RouteProblem({1: (0, 0), 2: (1, 0)}, [], 1, {2}))
+        self.assertIsNone(result.goal)
+        self.assertEqual(result.nodes_created, 1)
+
+    def test_coincident_coordinates_and_cycle(self):
         problem = RouteProblem({i: (0, 0) for i in [1, 2, 3]},
-                               [(1, 3, 2), (1, 2, 2)], 1, {2, 3})
+                               [(1, 2, 1), (2, 1, 1), (2, 3, 1)], 1, {3})
+        result = cus1(problem)
+        self.assertEqual(result.goal.path(), [1, 2, 3])
+        self.assertEqual(result.nodes_created, 7)
+
+    def test_equal_priorities_use_sibling_order(self):
+        problem = RouteProblem({i: (0, 0) for i in [1, 2, 3]},
+                               [(1, 3, 1), (1, 2, 9)], 1, {2, 3})
         self.assertEqual(cus1(problem).goal.path(), [1, 2])
 
 
