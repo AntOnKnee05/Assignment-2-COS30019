@@ -1,20 +1,48 @@
-"""A* search (AS) - informed."""
+"""A* search (AS): minimize total edge cost with a safe distance estimate."""
 
 from ..node import Node, SearchResult, expand
+from ..frontier import PriorityFrontier
+
+
+def heuristic_scale(problem):
+    """Bound cost per unit distance using the cheapest edge ratio.
+
+    For every edge u->v, scale * distance(u, v) <= cost(u, v).
+    The triangle inequality then makes scaled distance to the nearest goal
+    a lower bound on remaining path cost. Zero-cost edges may make it zero.
+    """
+    scale = 1.0
+    for source in problem.nodes:
+        for target, cost in problem.successors(source):
+            length = problem.distance(source, target)
+            if length > 0:
+                scale = min(scale, cost / length)
+    return scale
 
 
 def astar(problem):
-    """Run A* on `problem` and return a SearchResult.
+    """Tree search with path cycle checking and goal testing on removal.
 
-    Evaluate nodes with f(n) = g(n) + h(n), where g(n) = node.path_cost.
-
-    Hints:
-      * Use frontier.PriorityFrontier with priority = node.path_cost + h(n).
-      * Goal-test when a node is POPPED, not when it is generated, otherwise
-        the path returned may not be optimal.
+    Rank nodes by f = path_cost + scaled straight-line distance. Count all
+    created nodes, including the root and children rejected as cycles.
+    Assumes finite coordinates and nonnegative finite edge costs.
     """
+    scale = heuristic_scale(problem)
     root = Node(problem.origin)
     nodes_created = 1
+    frontier = PriorityFrontier()
+    frontier.push(root, scale * problem.heuristic(root.state))
 
-    # TODO: implement
-    raise NotImplementedError("AS is not implemented yet")
+    while frontier:
+        node = frontier.pop()
+        # A generated goal may be more expensive than a route still waiting.
+        if problem.is_goal(node.state):
+            return SearchResult(node, nodes_created)
+
+        for child in expand(problem, node):
+            nodes_created += 1
+            if not node.on_path(child.state):
+                estimate = scale * problem.heuristic(child.state)
+                frontier.push(child, child.path_cost + estimate)
+
+    return SearchResult(None, nodes_created)

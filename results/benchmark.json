@@ -1,0 +1,1389 @@
+{
+  "metadata": {
+    "recorded_utc": "2026-10-19T06:34:46.969856+00:00",
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "repetitions": 30,
+    "timing": "Median; parsing excluded; one warm-up"
+  },
+  "results": [
+    {
+      "case": "test01_spec_example.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 9,
+      "cost": 15,
+      "moves": 3,
+      "path": [
+        2,
+        1,
+        3,
+        5
+      ],
+      "median_ms": 0.0053
+    },
+    {
+      "case": "test01_spec_example.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 10,
+      "moves": 2,
+      "path": [
+        2,
+        1,
+        4
+      ],
+      "median_ms": 0.0028
+    },
+    {
+      "case": "test01_spec_example.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 7,
+      "cost": 10,
+      "moves": 2,
+      "path": [
+        2,
+        3,
+        5
+      ],
+      "median_ms": 0.01065
+    },
+    {
+      "case": "test01_spec_example.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 9,
+      "cost": 10,
+      "moves": 2,
+      "path": [
+        2,
+        3,
+        5
+      ],
+      "median_ms": 0.0188
+    },
+    {
+      "case": "test01_spec_example.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 15,
+      "cost": 10,
+      "moves": 2,
+      "path": [
+        2,
+        1,
+        4
+      ],
+      "median_ms": 0.01
+    },
+    {
+      "case": "test01_spec_example.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 9,
+      "cost": 10,
+      "moves": 2,
+      "path": [
+        2,
+        3,
+        5
+      ],
+      "median_ms": 0.0196
+    },
+    {
+      "case": "test02_origin_is_goal.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 1,
+      "cost": 0,
+      "moves": 0,
+      "path": [
+        1
+      ],
+      "median_ms": 0.0006
+    },
+    {
+      "case": "test02_origin_is_goal.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 1,
+      "cost": 0,
+      "moves": 0,
+      "path": [
+        1
+      ],
+      "median_ms": 0.0005
+    },
+    {
+      "case": "test02_origin_is_goal.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 1,
+      "cost": 0,
+      "moves": 0,
+      "path": [
+        1
+      ],
+      "median_ms": 0.0018
+    },
+    {
+      "case": "test02_origin_is_goal.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 1,
+      "cost": 0,
+      "moves": 0,
+      "path": [
+        1
+      ],
+      "median_ms": 0.0025
+    },
+    {
+      "case": "test02_origin_is_goal.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 1,
+      "cost": 0,
+      "moves": 0,
+      "path": [
+        1
+      ],
+      "median_ms": 0.0011
+    },
+    {
+      "case": "test02_origin_is_goal.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 1,
+      "cost": 0,
+      "moves": 0,
+      "path": [
+        1
+      ],
+      "median_ms": 0.0029
+    },
+    {
+      "case": "test03_unreachable.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "correctly unreachable",
+      "nodes_created": 3,
+      "cost": null,
+      "moves": null,
+      "path": null,
+      "median_ms": 0.0023
+    },
+    {
+      "case": "test03_unreachable.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "correctly unreachable",
+      "nodes_created": 3,
+      "cost": null,
+      "moves": null,
+      "path": null,
+      "median_ms": 0.002
+    },
+    {
+      "case": "test03_unreachable.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "correctly unreachable",
+      "nodes_created": 3,
+      "cost": null,
+      "moves": null,
+      "path": null,
+      "median_ms": 0.0041
+    },
+    {
+      "case": "test03_unreachable.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "correctly unreachable",
+      "nodes_created": 3,
+      "cost": null,
+      "moves": null,
+      "path": null,
+      "median_ms": 0.0052
+    },
+    {
+      "case": "test03_unreachable.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "correctly unreachable",
+      "nodes_created": 3,
+      "cost": null,
+      "moves": null,
+      "path": null,
+      "median_ms": 0.0026
+    },
+    {
+      "case": "test03_unreachable.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "correctly unreachable",
+      "nodes_created": 3,
+      "cost": null,
+      "moves": null,
+      "path": null,
+      "median_ms": 0.0057
+    },
+    {
+      "case": "test04_one_way_edge.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 11,
+      "moves": 2,
+      "path": [
+        1,
+        3,
+        2
+      ],
+      "median_ms": 0.0025
+    },
+    {
+      "case": "test04_one_way_edge.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 11,
+      "moves": 2,
+      "path": [
+        1,
+        3,
+        2
+      ],
+      "median_ms": 0.0021
+    },
+    {
+      "case": "test04_one_way_edge.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 11,
+      "moves": 2,
+      "path": [
+        1,
+        3,
+        2
+      ],
+      "median_ms": 0.00515
+    },
+    {
+      "case": "test04_one_way_edge.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 11,
+      "moves": 2,
+      "path": [
+        1,
+        3,
+        2
+      ],
+      "median_ms": 0.0066
+    },
+    {
+      "case": "test04_one_way_edge.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 11,
+      "moves": 2,
+      "path": [
+        1,
+        3,
+        2
+      ],
+      "median_ms": 0.003
+    },
+    {
+      "case": "test04_one_way_edge.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 11,
+      "moves": 2,
+      "path": [
+        1,
+        3,
+        2
+      ],
+      "median_ms": 0.0072
+    },
+    {
+      "case": "test05_tie_break_ascending.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 2,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0027
+    },
+    {
+      "case": "test05_tie_break_ascending.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 2,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0025
+    },
+    {
+      "case": "test05_tie_break_ascending.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 2,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0064
+    },
+    {
+      "case": "test05_tie_break_ascending.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 2,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0101
+    },
+    {
+      "case": "test05_tie_break_ascending.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 2,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0045
+    },
+    {
+      "case": "test05_tie_break_ascending.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 2,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0107
+    },
+    {
+      "case": "test06_cheap_long_vs_short_expensive.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 3,
+      "moves": 3,
+      "path": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "median_ms": 0.0035
+    },
+    {
+      "case": "test06_cheap_long_vs_short_expensive.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 40,
+      "moves": 2,
+      "path": [
+        1,
+        5,
+        4
+      ],
+      "median_ms": 0.003
+    },
+    {
+      "case": "test06_cheap_long_vs_short_expensive.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 40,
+      "moves": 2,
+      "path": [
+        1,
+        5,
+        4
+      ],
+      "median_ms": 0.0062
+    },
+    {
+      "case": "test06_cheap_long_vs_short_expensive.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 3,
+      "moves": 3,
+      "path": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "median_ms": 0.0103
+    },
+    {
+      "case": "test06_cheap_long_vs_short_expensive.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 3,
+      "moves": 3,
+      "path": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "median_ms": 0.0044
+    },
+    {
+      "case": "test06_cheap_long_vs_short_expensive.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 40,
+      "moves": 2,
+      "path": [
+        1,
+        5,
+        4
+      ],
+      "median_ms": 0.011
+    },
+    {
+      "case": "test07_multiple_destinations.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 5,
+      "moves": 1,
+      "path": [
+        1,
+        2
+      ],
+      "median_ms": 0.0021
+    },
+    {
+      "case": "test07_multiple_destinations.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 2,
+      "cost": 5,
+      "moves": 1,
+      "path": [
+        1,
+        2
+      ],
+      "median_ms": 0.0015
+    },
+    {
+      "case": "test07_multiple_destinations.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 5,
+      "moves": 1,
+      "path": [
+        1,
+        2
+      ],
+      "median_ms": 0.0066
+    },
+    {
+      "case": "test07_multiple_destinations.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 4,
+      "moves": 2,
+      "path": [
+        1,
+        4,
+        3
+      ],
+      "median_ms": 0.0104
+    },
+    {
+      "case": "test07_multiple_destinations.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 4,
+      "moves": 2,
+      "path": [
+        1,
+        4,
+        3
+      ],
+      "median_ms": 0.0039
+    },
+    {
+      "case": "test07_multiple_destinations.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 5,
+      "moves": 1,
+      "path": [
+        1,
+        2
+      ],
+      "median_ms": 0.0092
+    },
+    {
+      "case": "test08_cycle_trap.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 7,
+      "cost": 7,
+      "moves": 3,
+      "path": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "median_ms": 0.005
+    },
+    {
+      "case": "test08_cycle_trap.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 6,
+      "cost": 7,
+      "moves": 3,
+      "path": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "median_ms": 0.0034
+    },
+    {
+      "case": "test08_cycle_trap.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 6,
+      "cost": 7,
+      "moves": 3,
+      "path": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "median_ms": 0.0083
+    },
+    {
+      "case": "test08_cycle_trap.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 6,
+      "cost": 7,
+      "moves": 3,
+      "path": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "median_ms": 0.0107
+    },
+    {
+      "case": "test08_cycle_trap.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 7,
+      "cost": 7,
+      "moves": 3,
+      "path": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "median_ms": 0.0056
+    },
+    {
+      "case": "test08_cycle_trap.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 6,
+      "cost": 7,
+      "moves": 3,
+      "path": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "median_ms": 0.0114
+    },
+    {
+      "case": "test09_dfs_deep_branch.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 10,
+      "cost": 9,
+      "moves": 8,
+      "path": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "median_ms": 0.0129
+    },
+    {
+      "case": "test09_dfs_deep_branch.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 3,
+      "moves": 1,
+      "path": [
+        1,
+        9
+      ],
+      "median_ms": 0.0023
+    },
+    {
+      "case": "test09_dfs_deep_branch.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 3,
+      "moves": 1,
+      "path": [
+        1,
+        9
+      ],
+      "median_ms": 0.0047
+    },
+    {
+      "case": "test09_dfs_deep_branch.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 3,
+      "moves": 1,
+      "path": [
+        1,
+        9
+      ],
+      "median_ms": 0.01175
+    },
+    {
+      "case": "test09_dfs_deep_branch.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 3,
+      "moves": 1,
+      "path": [
+        1,
+        9
+      ],
+      "median_ms": 0.0045
+    },
+    {
+      "case": "test09_dfs_deep_branch.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 3,
+      "moves": 1,
+      "path": [
+        1,
+        9
+      ],
+      "median_ms": 0.008799999999999999
+    },
+    {
+      "case": "test10_greedy_trap.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 34,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        5
+      ],
+      "median_ms": 0.0027
+    },
+    {
+      "case": "test10_greedy_trap.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 34,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        5
+      ],
+      "median_ms": 0.0026
+    },
+    {
+      "case": "test10_greedy_trap.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 34,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        5
+      ],
+      "median_ms": 0.0063
+    },
+    {
+      "case": "test10_greedy_trap.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 6,
+      "cost": 18,
+      "moves": 3,
+      "path": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "median_ms": 0.0119
+    },
+    {
+      "case": "test10_greedy_trap.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 6,
+      "cost": 18,
+      "moves": 3,
+      "path": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "median_ms": 0.0054
+    },
+    {
+      "case": "test10_greedy_trap.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 34,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        5
+      ],
+      "median_ms": 0.00915
+    },
+    {
+      "case": "test11_inadmissible_heuristic.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 2,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        3
+      ],
+      "median_ms": 0.0028
+    },
+    {
+      "case": "test11_inadmissible_heuristic.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 12,
+      "moves": 1,
+      "path": [
+        1,
+        3
+      ],
+      "median_ms": 0.0019
+    },
+    {
+      "case": "test11_inadmissible_heuristic.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 12,
+      "moves": 1,
+      "path": [
+        1,
+        3
+      ],
+      "median_ms": 0.0046
+    },
+    {
+      "case": "test11_inadmissible_heuristic.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 2,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        3
+      ],
+      "median_ms": 0.00795
+    },
+    {
+      "case": "test11_inadmissible_heuristic.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 2,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        3
+      ],
+      "median_ms": 0.0035
+    },
+    {
+      "case": "test11_inadmissible_heuristic.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 3,
+      "cost": 12,
+      "moves": 1,
+      "path": [
+        1,
+        3
+      ],
+      "median_ms": 0.0069
+    },
+    {
+      "case": "test12_dead_ends.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 9,
+      "cost": 6,
+      "moves": 3,
+      "path": [
+        1,
+        4,
+        8,
+        9
+      ],
+      "median_ms": 0.0078
+    },
+    {
+      "case": "test12_dead_ends.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 9,
+      "cost": 6,
+      "moves": 3,
+      "path": [
+        1,
+        4,
+        8,
+        9
+      ],
+      "median_ms": 0.0055
+    },
+    {
+      "case": "test12_dead_ends.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 6,
+      "cost": 6,
+      "moves": 3,
+      "path": [
+        1,
+        4,
+        8,
+        9
+      ],
+      "median_ms": 0.009049999999999999
+    },
+    {
+      "case": "test12_dead_ends.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 7,
+      "cost": 6,
+      "moves": 3,
+      "path": [
+        1,
+        4,
+        8,
+        9
+      ],
+      "median_ms": 0.0148
+    },
+    {
+      "case": "test12_dead_ends.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 9,
+      "cost": 6,
+      "moves": 3,
+      "path": [
+        1,
+        4,
+        8,
+        9
+      ],
+      "median_ms": 0.0089
+    },
+    {
+      "case": "test12_dead_ends.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 7,
+      "cost": 6,
+      "moves": 3,
+      "path": [
+        1,
+        4,
+        8,
+        9
+      ],
+      "median_ms": 0.0156
+    },
+    {
+      "case": "test13_large_grid.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 79,
+      "cost": 78,
+      "moves": 24,
+      "path": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        10,
+        9,
+        8,
+        7,
+        6,
+        11,
+        12,
+        13,
+        14,
+        15,
+        20,
+        19,
+        18,
+        17,
+        16,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "median_ms": 0.0556
+    },
+    {
+      "case": "test13_large_grid.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 76,
+      "cost": 40,
+      "moves": 8,
+      "path": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "median_ms": 0.027
+    },
+    {
+      "case": "test13_large_grid.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 29,
+      "cost": 25,
+      "moves": 8,
+      "path": [
+        1,
+        2,
+        7,
+        8,
+        13,
+        14,
+        19,
+        20,
+        25
+      ],
+      "median_ms": 0.0372
+    },
+    {
+      "case": "test13_large_grid.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 299,
+      "cost": 17,
+      "moves": 8,
+      "path": [
+        1,
+        6,
+        7,
+        12,
+        13,
+        18,
+        19,
+        24,
+        25
+      ],
+      "median_ms": 0.41675
+    },
+    {
+      "case": "test13_large_grid.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 736,
+      "cost": 17,
+      "moves": 8,
+      "path": [
+        1,
+        6,
+        7,
+        12,
+        13,
+        18,
+        19,
+        24,
+        25
+      ],
+      "median_ms": 0.56175
+    },
+    {
+      "case": "test13_large_grid.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 573,
+      "cost": 25,
+      "moves": 8,
+      "path": [
+        1,
+        2,
+        7,
+        8,
+        13,
+        14,
+        19,
+        20,
+        25
+      ],
+      "median_ms": 1.1551
+    },
+    {
+      "case": "test14_decimal_values.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 4.4,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.00295
+    },
+    {
+      "case": "test14_decimal_values.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 4.4,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.00275
+    },
+    {
+      "case": "test14_decimal_values.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 4.4,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0068
+    },
+    {
+      "case": "test14_decimal_values.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 4.4,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0087
+    },
+    {
+      "case": "test14_decimal_values.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 4.4,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0046
+    },
+    {
+      "case": "test14_decimal_values.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 4.4,
+      "moves": 2,
+      "path": [
+        1,
+        2,
+        4
+      ],
+      "median_ms": 0.0111
+    },
+    {
+      "case": "test15_equal_cost_tie.txt",
+      "method": "DFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 4,
+      "moves": 2,
+      "path": [
+        1,
+        4,
+        3
+      ],
+      "median_ms": 0.0028
+    },
+    {
+      "case": "test15_equal_cost_tie.txt",
+      "method": "BFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 4,
+      "moves": 2,
+      "path": [
+        1,
+        4,
+        3
+      ],
+      "median_ms": 0.0026
+    },
+    {
+      "case": "test15_equal_cost_tie.txt",
+      "method": "GBFS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 4,
+      "cost": 4,
+      "moves": 2,
+      "path": [
+        1,
+        4,
+        3
+      ],
+      "median_ms": 0.0074
+    },
+    {
+      "case": "test15_equal_cost_tie.txt",
+      "method": "AS",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 4,
+      "moves": 2,
+      "path": [
+        1,
+        4,
+        3
+      ],
+      "median_ms": 0.0113
+    },
+    {
+      "case": "test15_equal_cost_tie.txt",
+      "method": "CUS1",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 4,
+      "moves": 2,
+      "path": [
+        1,
+        4,
+        3
+      ],
+      "median_ms": 0.0045
+    },
+    {
+      "case": "test15_equal_cost_tie.txt",
+      "method": "CUS2",
+      "verified": true,
+      "outcome": "route found",
+      "nodes_created": 5,
+      "cost": 4,
+      "moves": 2,
+      "path": [
+        1,
+        4,
+        3
+      ],
+      "median_ms": 0.0188
+    }
+  ]
+}

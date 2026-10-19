@@ -6,6 +6,7 @@ from ..node import Node, SearchResult, expand
 
 
 def bfs(problem):
+    """Count every created Node, including the root and rejected repeats."""
     root = Node(problem.origin)
     nodes_created = 1
 
@@ -22,9 +23,9 @@ def bfs(problem):
         # Children come out in ascending order, so ties between nodes on the
         # same level are broken by smaller id, then insertion order (NOTE 2).
         for child in expand(problem, node):
+            nodes_created += 1
             if child.state in reached:
                 continue
-            nodes_created += 1
             if problem.is_goal(child.state):
                 return SearchResult(child, nodes_created)
             reached.add(child.state)

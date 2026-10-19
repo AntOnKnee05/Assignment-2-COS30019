@@ -1,20 +1,43 @@
-"""Custom search 2 (CUS2) - an informed method to find a shortest path (least moves)."""
+"""CUS2: A* on move count, with a geometric lower bound on moves left."""
 
 from ..node import Node, SearchResult, expand
+from ..frontier import PriorityFrontier
+
+
+def longest_edge_length(problem):
+    """One move can cover at most this much straight-line distance."""
+    return max((problem.distance(source, target)
+                for source in problem.nodes
+                for target, _ in problem.successors(source)), default=0.0)
 
 
 def cus2(problem):
-    """Run CUS2 on `problem` and return a SearchResult.
+    """Minimize moves using f = depth + distance / longest edge length.
 
-    Self-learning method. "Shortest" here means fewest moves (edges), not
-    lowest cost. Suggested options (pick one and justify it):
-      * A* where g(n) = node.depth and h(n) is an estimate of remaining moves
-        (e.g. straight-line distance / longest edge length, kept admissible).
-      * IDA* (iterative deepening A*) on the same f(n).
-      * Weighted A* / beam search (note: these trade optimality for speed).
+    By the triangle inequality, k moves can cover at most k * longest_edge
+    distance. The estimate therefore never exceeds the moves required.
+    Use zero when every edge has zero length (or there are no edges).
+    Path costs are still recorded for reporting, but do not affect priority.
     """
+    longest = longest_edge_length(problem)
+
+    def remaining_moves(state):
+        return problem.heuristic(state) / longest if longest > 0 else 0.0
+
     root = Node(problem.origin)
     nodes_created = 1
+    frontier = PriorityFrontier()
+    frontier.push(root, remaining_moves(root.state))
 
-    # TODO: implement
-    raise NotImplementedError("CUS2 is not implemented yet")
+    while frontier:
+        node = frontier.pop()
+        if problem.is_goal(node.state):
+            return SearchResult(node, nodes_created)
+
+        for child in expand(problem, node):
+            # Count even children rejected because they repeat an ancestor.
+            nodes_created += 1
+            if not node.on_path(child.state):
+                frontier.push(child, child.depth + remaining_moves(child.state))
+
+    return SearchResult(None, nodes_created)
