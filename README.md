@@ -14,7 +14,8 @@ python search.py <filename> <method>
 search <filename> <method>          (via search.bat)
 ```
 
-Methods: `DFS`, `BFS`, `GBFS`, `AS`, `CUS1`, `CUS2`
+Methods: `DFS`, `BFS`, `GBFS`, `AS`, `CUS1`, `CUS2`, plus the research extension `ALL`
+(cheapest route that visits every destination; the path may repeat locations)
 
 Output:
 
@@ -52,32 +53,43 @@ python -m unittest discover tests
 | `route_finding/algorithms/cus1.py` | IDDFS | implemented and tested |
 | `route_finding/algorithms/cus2.py` | IDA* for fewest moves | implemented and tested |
 | `tests/cases/` | Problem files (need **at least 15**), described in `tests/cases/README.md` | 15 – done |
+| `route_finding/trace.py` | Records real node expansions for the GUI replay | done |
+| `gui.py` | Tkinter viewer that animates any method on a problem file | done, checked on cases 01 and 13 |
+| `route_finding/algorithms/visit_all.py` | Research: cheapest route visiting ALL destinations (`python search.py <file> ALL`) | done |
+| `research_visit_all.py` | Research experiments; writes `results/visit_all.md` | done |
+| `tests/visit_all_cases/` | Test maps for the research extension | done |
 | `run_tests.py` | Batch runner / results table | done |
+| `benchmark_report.py` | Verifies all 90 runs against reference answers and times them | done |
+| `tests/` | 80 unit tests (`python -m unittest discover tests`) | all passing |
+| `tests/cases/expected_results.json` | Locked goal / number_of_nodes / path for all 90 runs | regenerate with `python tests/update_expected_results.py` |
 
 Each algorithm takes a `RouteProblem` and returns `SearchResult(goal_node_or_None, nodes_created)`.
 CUS1 is IDDFS; CUS2 is IDA* for fewest moves.
 
-## Decisions to agree on as a team (and state in the report)
+## Design decisions (stated in the report)
 
-- **Tie-breaking (NOTE 2):** expand smaller node ids first, then chronological insertion order.
-  `PriorityFrontier` uses `(priority, insertion_counter)` with children inserted in ascending order.
-- **Cycles:** the graph has cycles (e.g. 1 ↔ 3). Pick a strategy – `node.on_path()` (pure tree search)
-  or a visited set (graph search) – and apply it consistently.
-- **number_of_nodes:** count every `Node` created, including the root.
-- **Goal test timing:** on generation vs. on expansion (A* must test on expansion to stay optimal).
-- **Heuristic:** straight-line distance to the nearest destination. Only admissible if edge costs are
-  at least their Euclidean length – discuss in the report.
+- **Tie-breaking (NOTE 2):** children are generated in ascending node id; `PriorityFrontier` breaks
+  equal priorities by insertion order (priorities are rounded to 9 decimal places so floating-point
+  noise does not break a genuine tie).
+- **Cycles:** BFS keeps a global reached set. All other methods reject a child already on the
+  current path (`node.on_path()`), so a state can still be reached along different branches.
+- **number_of_nodes:** every `Node` created, including the root, children rejected as cycles or
+  duplicates, and (for CUS1/CUS2) nodes regenerated in later iterations.
+- **Goal test timing:** BFS on generation; DFS, GBFS and AS on removal from the frontier; CUS1 when a
+  node is first visited; CUS2 when a child is within the current threshold.
+- **Heuristic:** straight-line distance to the nearest destination. GBFS uses it directly; AS scales
+  it so it never overestimates cost; CUS2 divides it by the longest edge to estimate moves.
 
 ## Deliverables checklist
 
-- [ ] All 6 methods working (10 marks each)
-- [~] ≥ 15 test cases covering different scenarios (done), results documented (10)
+- [x] All 6 methods working (10 marks each)
+- [x] ≥ 15 test cases covering different scenarios, results documented in `results/` (10)
 - [ ] Report, 8–10 pages excl. cover/TOC, named `<TeamID>.pdf` (20)
   - cover page with names, IDs, signatures, contribution statement · TOC · instructions · introduction ·
     features/bugs/missing · testing · insights (with data) · research · conclusion ·
     acknowledgements/resources (incl. AI use) · references · captioned figures/tables · page numbers
-- [ ] Research component, e.g. visit ALL destinations via the shortest path (10)
-- [ ] Clean, commented code (up to −10 otherwise)
+- [x] Research component: visit ALL destinations via the cheapest route (`ALL`, report section 6.4) (10)
+- [x] Clean, commented code (up to −10 otherwise)
 - [ ] At least two in-class progress meetings with the tutor, a week apart (`COS30019_a2_MeetingRecordForm.docx`)
 - [ ] Who-did-what form (`COS30019 - Who did What.docx`)
 

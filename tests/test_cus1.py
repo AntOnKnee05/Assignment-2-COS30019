@@ -1,51 +1,33 @@
-"""IDDFS minimum-move checks independent of the repository BFS method."""
+"""CUS1 (IDDFS): fewest moves, checked against an independent reference."""
 
-from collections import deque
-from pathlib import Path
 import unittest
 
+from helpers import RouteAssertions, fixture_paths, load_case, min_moves
 from route_finding import parse_problem
-from route_finding.problem import RouteProblem
 from route_finding.algorithms.cus1 import cus1
+from route_finding.problem import RouteProblem
 
 
-class IDDFSTests(unittest.TestCase):
-    def test_all_fifteen_fixtures_minimize_moves(self):
-        cases = sorted((Path(__file__).parent / 'cases').glob('test*.txt'))
-        self.assertGreaterEqual(len(cases), 15)
-        for case in cases:
+class IDDFSTests(RouteAssertions, unittest.TestCase):
+    def test_all_fixtures_minimize_moves(self):
+        for case in fixture_paths():
             with self.subTest(case=case.name):
                 problem = parse_problem(case)
-                depths = {problem.origin: 0}
-                queue = deque([problem.origin])
-                while queue:
-                    source = queue.popleft()
-                    for target, _ in problem.successors(source):
-                        if target not in depths:
-                            depths[target] = depths[source] + 1
-                            queue.append(target)
-                optimum = min((depths[g] for g in problem.destinations
-                               if g in depths), default=None)
+                optimum = min_moves(problem)
                 result = cus1(problem)
                 if optimum is None:
                     self.assertIsNone(result.goal)
                     continue
-                self.assertIsNotNone(result.goal)
+                self.assertValidRoute(problem, result)
                 self.assertEqual(result.goal.depth, optimum)
-                path = result.goal.path()
-                self.assertEqual(path[0], problem.origin)
-                self.assertIn(path[-1], problem.destinations)
-                self.assertEqual(len(path), len(set(path)))
-                total = 0
-                for source, target in zip(path, path[1:]):
-                    edges = dict(problem.successors(source))
-                    self.assertIn(target, edges)
-                    total += edges[target]
-                self.assertAlmostEqual(result.goal.path_cost, total)
+
+    def test_example(self):
+        result = cus1(load_case("test01_spec_example.txt"))
+        self.assertEqual(result.goal.path(), [2, 1, 4])
+        self.assertEqual(result.nodes_created, 8)
 
     def test_fewer_moves_even_when_more_expensive(self):
-        problem = parse_problem(Path(__file__).parent / 'cases/test06_cheap_long_vs_short_expensive.txt')
-        result = cus1(problem)
+        result = cus1(load_case("test06_cheap_long_vs_short_expensive.txt"))
         self.assertEqual(result.goal.path(), [1, 5, 4])
         self.assertEqual(result.goal.depth, 2)
         self.assertEqual(result.goal.path_cost, 40)
@@ -73,5 +55,5 @@ class IDDFSTests(unittest.TestCase):
         self.assertEqual(cus1(problem).goal.path(), [1, 2])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

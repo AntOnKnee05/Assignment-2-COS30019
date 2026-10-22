@@ -33,9 +33,18 @@ def _to_number(text):
     return int(value) if value.is_integer() else value
 
 
+def _to_node_id(text, line_no, what):
+    """Convert a node id in the Origin/Destinations sections, or raise ParseError."""
+    text = text.strip()
+    if not text.isdigit():
+        raise ParseError(f"line {line_no}: {what} must be a node number, got '{text}'")
+    return int(text)
+
+
 def parse_problem(path):
     """Read the problem file at `path` and return a RouteProblem."""
-    with open(path, encoding="utf-8") as f:
+    # utf-8-sig also accepts files saved by Windows Notepad with a byte-order mark.
+    with open(path, encoding="utf-8-sig") as f:
         return parse_problem_text(f.read())
 
 
@@ -64,8 +73,10 @@ def parse_problem_text(text):
             match = _NODE_RE.match(line)
             if not match:
                 raise ParseError(f"line {line_no}: bad node '{raw}'")
-            node_id, x, y = match.groups()
-            nodes[int(node_id)] = (_to_number(x), _to_number(y))
+            node_id, x, y = int(match.group(1)), match.group(2), match.group(3)
+            if node_id in nodes:
+                raise ParseError(f"line {line_no}: node {node_id} is declared twice")
+            nodes[node_id] = (_to_number(x), _to_number(y))
         elif section == "edges":
             match = _EDGE_RE.match(line)
             if not match:
@@ -75,9 +86,10 @@ def parse_problem_text(text):
         elif section == "origin":
             if origin is not None:
                 raise ParseError(f"line {line_no}: more than one origin")
-            origin = int(line)
+            origin = _to_node_id(line, line_no, "Origin")
         elif section == "destinations":
-            destinations.extend(int(d) for d in line.split(";") if d.strip())
+            destinations.extend(_to_node_id(d, line_no, "each destination")
+                                for d in line.split(";") if d.strip())
         else:
             raise ParseError(f"line {line_no}: content outside any section '{raw}'")
 

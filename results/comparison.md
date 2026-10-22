@@ -129,11 +129,3 @@ A missing route is a correct outcome for the deliberately unreachable case.
 | test15_equal_cost_tie.txt | AS | route found | 4 | 2 | 5 | 0.0143 |
 | test15_equal_cost_tie.txt | CUS1 | route found | 4 | 2 | 7 | 0.0082 |
 | test15_equal_cost_tie.txt | CUS2 | route found | 4 | 2 | 3 | 0.0090 |
-
-## Remaining submission work
-
-- Write the 8-10 page report with actual team details, contributions and AI-use acknowledgement.
-- Add properly sourced algorithm explanations and references.
-- Decide and document the research component; do not claim GUI validation or memory experiments that were not performed.
-- Confirm tie-breaking interpretation and choice of custom methods with course guidance.
-- Complete team signatures and required tutor progress records.

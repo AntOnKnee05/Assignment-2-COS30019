@@ -15,12 +15,17 @@ import itertools
 
 
 class PriorityFrontier:
+    """Min-priority queue; equal priorities pop in insertion order."""
+
     def __init__(self):
         self._heap = []
         self._counter = itertools.count()
 
     def push(self, node, priority):
-        heapq.heappush(self._heap, (priority, next(self._counter), node))
+        # Round away floating-point noise (e.g. 0.1 + 0.2 != 0.3) so that
+        # priorities which are equal in exact arithmetic count as ties and
+        # fall back to insertion order, as NOTE 2 requires.
+        heapq.heappush(self._heap, (round(priority, 9), next(self._counter), node))
 
     def pop(self):
         return heapq.heappop(self._heap)[-1]

@@ -1,24 +1,22 @@
-"""DFS behaviour and route validity checks, using the standard library."""
+"""DFS behaviour and route validity checks."""
 
-from pathlib import Path
 import unittest
 
+from helpers import RouteAssertions, fixture_paths, load_case, reachable_states
 from route_finding import parse_problem
-from route_finding.problem import RouteProblem
 from route_finding.algorithms.dfs import dfs
+from route_finding.problem import RouteProblem
 
 
-class DFSTests(unittest.TestCase):
+class DFSTests(RouteAssertions, unittest.TestCase):
     def test_example_route_and_created_count(self):
-        problem = parse_problem(Path(__file__).parent / 'cases/test01_spec_example.txt')
-        result = dfs(problem)
+        result = dfs(load_case("test01_spec_example.txt"))
         self.assertEqual(result.goal.path(), [2, 1, 3, 5])
         self.assertEqual(result.goal.path_cost, 15)
         self.assertEqual(result.nodes_created, 9)
 
     def test_origin_is_goal(self):
-        problem = RouteProblem({1: (0, 0)}, [], 1, {1})
-        result = dfs(problem)
+        result = dfs(RouteProblem({1: (0, 0)}, [], 1, {1}))
         self.assertEqual(result.goal.path(), [1])
         self.assertEqual(result.nodes_created, 1)
 
@@ -36,36 +34,16 @@ class DFSTests(unittest.TestCase):
             [(1, 4, 1), (1, 2, 1), (2, 3, 1), (3, 4, 1)], 1, {4})
         self.assertEqual(dfs(problem).goal.path(), [1, 2, 3, 4])
 
-    def test_all_fifteen_fixtures(self):
-        cases = sorted((Path(__file__).parent / 'cases').glob('test*.txt'))
-        self.assertGreaterEqual(len(cases), 15)
-        for case in cases:
+    def test_all_fixtures_find_a_valid_route_when_one_exists(self):
+        for case in fixture_paths():
             with self.subTest(case=case.name):
                 problem = parse_problem(case)
-                # Independent reachability check, without search-tree nodes.
-                reachable = {problem.origin}
-                pending = [problem.origin]
-                while pending:
-                    for state, _ in problem.successors(pending.pop()):
-                        if state not in reachable:
-                            reachable.add(state)
-                            pending.append(state)
                 result = dfs(problem)
-                self.assertEqual(result.goal is not None,
-                                 bool(reachable & problem.destinations))
-                if result.goal is None:
-                    continue
-                path = result.goal.path()
-                self.assertEqual(path[0], problem.origin)
-                self.assertIn(path[-1], problem.destinations)
-                self.assertEqual(len(path), len(set(path)))
-                cost = 0
-                for source, target in zip(path, path[1:]):
-                    edges = dict(problem.successors(source))
-                    self.assertIn(target, edges)
-                    cost += edges[target]
-                self.assertAlmostEqual(result.goal.path_cost, cost)
+                if reachable_states(problem) & problem.destinations:
+                    self.assertValidRoute(problem, result)
+                else:
+                    self.assertIsNone(result.goal)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

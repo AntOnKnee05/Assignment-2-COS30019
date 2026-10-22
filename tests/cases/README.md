@@ -3,10 +3,15 @@
 Each file uses the assignment's problem format. Run them all with `python run_tests.py`,
 or watch one with `python gui.py tests/cases/<file> <method>`.
 
-**Cheapest path** is the minimum-cost route (what A* and a uniform-cost search should find when
-the heuristic is admissible). **Fewest moves** is what BFS finds. Both were checked
-independently with Dijkstra's algorithm and BFS. "h admissible" says whether every edge cost is at
-least its straight-line length, which makes the straight-line heuristic admissible.
+**Cheapest path** is the minimum-cost route, which AS must find. **Fewest moves** is the
+minimum-edge route, which BFS, CUS1 and CUS2 must find. Both columns were checked
+independently (Bellman-Ford for cost, a plain breadth-first traversal for moves) in
+`tests/helpers.py`. **h admissible** says whether every edge costs at least its straight-line
+length, i.e. whether *raw* straight-line distance is a safe cost estimate. AS does not rely on
+this: it scales the estimate down when needed (see `astar.heuristic_scale`).
+
+`expected_results.json` records the exact goal, number_of_nodes and path for every method on
+every case; `tests/test_regression.py` fails if any of them change.
 
 | # | File | Scenario it tests | Cheapest path (cost) | Fewest moves | h admissible |
 |---|---|---|---|---|---|
@@ -28,9 +33,12 @@ least its straight-line length, which makes the straight-line heuristic admissib
 
 Notes:
 
-- Case 15 has two equally good answers. Cost-ordered methods that break ties by smaller node id
-  should return goal 2; BFS returns goal 3 because node 4 is expanded before node 5.
-- Cases 4, 5, 7 and 11 have edges shorter than their straight-line length, so A* isn't guaranteed
-  to be optimal on them. Case 11 is built to show this; discuss it in the report.
-- DFS results depend on how cycles are handled, so they aren't listed. Record whatever your
-  implementation returns and explain it.
+- Case 15 has two equally good answers (1 5 2 and 1 4 3, both cost 4 in two moves). Ties are
+  broken by insertion order with siblings added in ascending id order (NOTE 2), so node 4 is
+  handled before node 5 and every method returns 1 4 3.
+- Cases 4, 5, 7 and 11 contain edges that cost less than their straight-line length. Raw
+  straight-line distance can therefore overestimate on them; case 11 is built so that A* with
+  the raw estimate would return the cost-12 route. The scaled estimate used by AS keeps it
+  optimal on all fifteen cases.
+- DFS and GBFS do not guarantee either optimum, so their routes aren't listed here; see
+  `expected_results.json` or `python run_tests.py`.

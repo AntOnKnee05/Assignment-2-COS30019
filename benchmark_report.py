@@ -1,4 +1,12 @@
-"""Validate all methods and generate reproducible report evidence."""
+"""Validate all methods and generate reproducible report evidence.
+
+Run from the project folder:  python benchmark_report.py
+
+For every method on every case this checks the returned route against
+independent reference answers (Bellman-Ford minimum cost and minimum moves),
+then times 30 repeated runs after a warm-up. Results are written to
+results/benchmark.json and results/comparison.md.
+"""
 import json
 import math
 import platform
@@ -15,6 +23,7 @@ REPEATS = 30
 
 
 def reference(problem):
+    """Return (minimum cost, minimum moves) to any destination; inf if unreachable."""
     # Bellman-Ford relaxation, separately for edge cost and unit move cost.
     costs = dict.fromkeys(problem.nodes, math.inf)
     moves = dict.fromkeys(problem.nodes, math.inf)
@@ -29,6 +38,7 @@ def reference(problem):
 
 
 def check(problem, method, result, best_cost, best_moves):
+    """Assert the result is a valid route and optimal where the method promises it."""
     if math.isinf(best_cost):
         assert result.goal is None, 'Returned a goal for an unreachable problem'
         return
@@ -116,12 +126,6 @@ def main():
         cost = r['cost'] if r['cost'] is not None else 'N/A'
         moves = r['moves'] if r['moves'] is not None else 'N/A'
         lines.append(f"| {r['case']} | {r['method']} | {r['outcome']} | {cost} | {moves} | {r['nodes_created']} | {r['median_ms']:.4f} |")
-    lines += ['', '## Remaining submission work', '',
-              '- Write the 8-10 page report with actual team details, contributions and AI-use acknowledgement.',
-              '- Add properly sourced algorithm explanations and references.',
-              '- Decide and document the research component; do not claim GUI validation or memory experiments that were not performed.',
-              '- Confirm tie-breaking interpretation and choice of custom methods with course guidance.',
-              '- Complete team signatures and required tutor progress records.']
     (output / 'comparison.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     print(f'Validated {len(rows)} results; saved results/comparison.md and results/benchmark.json')
 

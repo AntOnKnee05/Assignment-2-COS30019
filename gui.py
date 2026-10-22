@@ -8,8 +8,8 @@ the origin and destinations, then replays the search one expansion at a time
 and finally highlights the path found. Standard library only (tkinter).
 
 The viewer works with any method in METHODS without changing the algorithms:
-it records every call to problem.successors(), which is what expand() uses,
-so each call is one node expansion in the order the algorithm made it.
+route_finding.trace records each call to expand(), so every logged step is
+one real node expansion in the order the algorithm made it.
 """
 
 import glob
@@ -21,6 +21,7 @@ from tkinter import filedialog, messagebox, ttk
 
 from route_finding import ParseError, parse_problem
 from route_finding.algorithms import METHODS
+from route_finding.trace import trace_search
 
 CASES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests", "cases")
 
@@ -45,26 +46,6 @@ COLOURS = {
 }
 
 
-def trace_search(problem, method):
-    """Run `method` on `problem` and record the order of expansions.
-
-    Returns (result, steps) where steps is a list of
-    (expanded_state, [successor states in the order they were generated]).
-    """
-    steps = []
-    original = problem.successors
-
-    def recording_successors(state):
-        successors = original(state)
-        steps.append((state, [s for s, _ in successors]))
-        return successors
-
-    problem.successors = recording_successors  # instance attribute shadows the method
-    try:
-        result = method(problem)
-    finally:
-        del problem.successors
-    return result, steps
 
 
 class SearchViewer:

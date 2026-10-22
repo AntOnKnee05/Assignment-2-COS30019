@@ -40,9 +40,10 @@ class RouteProblem:
     def heuristic(self, state):
         """Straight-line distance from `state` to the nearest destination.
 
-        Used by the informed methods (GBFS, AS). It is only admissible when
-        every edge cost is at least the straight-line length of that edge,
-        which holds for the example in the spec but is not guaranteed by the
-        file format - worth discussing in the report.
+        GBFS uses this value directly. It is not always a lower bound on the
+        remaining cost, because the file format allows an edge to cost less
+        than its straight-line length. AS therefore multiplies it by a safe
+        scale factor (see astar.heuristic_scale), and CUS2 divides it by the
+        longest edge to estimate remaining moves.
         """
         return min(self.distance(state, goal) for goal in self.destinations)
