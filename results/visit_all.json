@@ -1,0 +1,262 @@
+{
+  "comparison": [
+    {
+      "case": "test01_spec_example.txt",
+      "destinations": 2,
+      "optimal_cost": 17,
+      "route": [
+        2,
+        1,
+        4,
+        5
+      ],
+      "revisits": 0,
+      "nodes": {
+        "mst": 15,
+        "farthest": 15,
+        "none": 25
+      },
+      "ms": {
+        "mst": 0.03863099999534825,
+        "farthest": 0.028011000040351064,
+        "none": 0.03321100001585364
+      },
+      "nearest_first_cost": 17,
+      "location_only_cost": 17
+    },
+    {
+      "case": "all01_dead_end.txt",
+      "destinations": 2,
+      "optimal_cost": 10,
+      "route": [
+        1,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "revisits": 1,
+      "nodes": {
+        "mst": 8,
+        "farthest": 9,
+        "none": 9
+      },
+      "ms": {
+        "mst": 0.027500999976837193,
+        "farthest": 0.023120999969705736,
+        "none": 0.014071000009607815
+      },
+      "nearest_first_cost": 10,
+      "location_only_cost": null
+    },
+    {
+      "case": "all02_greedy_trap.txt",
+      "destinations": 3,
+      "optimal_cost": 7,
+      "route": [
+        3,
+        2,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "revisits": 2,
+      "nodes": {
+        "mst": 14,
+        "farthest": 22,
+        "none": 34
+      },
+      "ms": {
+        "mst": 0.036570000020219595,
+        "farthest": 0.037070000018957217,
+        "none": 0.035600999979124026
+      },
+      "nearest_first_cost": 8,
+      "location_only_cost": null
+    },
+    {
+      "case": "all05_grid_five_destinations.txt",
+      "destinations": 5,
+      "optimal_cost": 51,
+      "route": [
+        1,
+        7,
+        13,
+        19,
+        25,
+        31,
+        25,
+        19,
+        20,
+        21,
+        27,
+        28,
+        34,
+        35,
+        36,
+        30,
+        29,
+        23,
+        17,
+        11,
+        12,
+        6
+      ],
+      "revisits": 2,
+      "nodes": {
+        "mst": 2309,
+        "farthest": 2536,
+        "none": 3045
+      },
+      "ms": {
+        "mst": 2.7385599999547594,
+        "farthest": 2.8477509999902395,
+        "none": 2.1652789999961897
+      },
+      "nearest_first_cost": 55,
+      "location_only_cost": 51
+    }
+  ],
+  "growth": [
+    {
+      "destinations": 1,
+      "states": 200,
+      "optimal_cost": 35,
+      "nodes": {
+        "mst": 359,
+        "farthest": 359,
+        "none": 359
+      },
+      "ms": {
+        "mst": 0.43106800001169177,
+        "farthest": 0.388886999985516,
+        "none": 0.3037449999965247
+      }
+    },
+    {
+      "destinations": 2,
+      "states": 400,
+      "optimal_cost": 53,
+      "nodes": {
+        "mst": 606,
+        "farthest": 606,
+        "none": 794
+      },
+      "ms": {
+        "mst": 0.7115529999737191,
+        "farthest": 0.6669219999935194,
+        "none": 0.6177010000101291
+      }
+    },
+    {
+      "destinations": 3,
+      "states": 800,
+      "optimal_cost": 62,
+      "nodes": {
+        "mst": 1208,
+        "farthest": 1414,
+        "none": 1841
+      },
+      "ms": {
+        "mst": 1.3306939999893075,
+        "farthest": 1.591748999999254,
+        "none": 1.3315240000224549
+      }
+    },
+    {
+      "destinations": 4,
+      "states": 1600,
+      "optimal_cost": 70,
+      "nodes": {
+        "mst": 3126,
+        "farthest": 3563,
+        "none": 4431
+      },
+      "ms": {
+        "mst": 3.6645359999738503,
+        "farthest": 4.071872999986681,
+        "none": 3.2858980000014526
+      }
+    },
+    {
+      "destinations": 5,
+      "states": 3200,
+      "optimal_cost": 71,
+      "nodes": {
+        "mst": 5140,
+        "farthest": 6662,
+        "none": 8629
+      },
+      "ms": {
+        "mst": 6.601787999954922,
+        "farthest": 8.41190099998812,
+        "none": 6.60248799999863
+      }
+    },
+    {
+      "destinations": 6,
+      "states": 6400,
+      "optimal_cost": 73,
+      "nodes": {
+        "mst": 9635,
+        "farthest": 13284,
+        "none": 17140
+      },
+      "ms": {
+        "mst": 13.70662499999753,
+        "farthest": 18.11674500004301,
+        "none": 14.118322999991051
+      }
+    },
+    {
+      "destinations": 7,
+      "states": 12800,
+      "optimal_cost": 74,
+      "nodes": {
+        "mst": 18262,
+        "farthest": 25598,
+        "none": 33592
+      },
+      "ms": {
+        "mst": 28.164715000002616,
+        "farthest": 36.71919800001433,
+        "none": 28.984209999975974
+      }
+    },
+    {
+      "destinations": 8,
+      "states": 25600,
+      "optimal_cost": 75,
+      "nodes": {
+        "mst": 35126,
+        "farthest": 50087,
+        "none": 65865
+      },
+      "ms": {
+        "mst": 56.92946099998153,
+        "farthest": 77.9185869999992,
+        "none": 60.875941999995575
+      }
+    },
+    {
+      "destinations": 9,
+      "states": 51200,
+      "optimal_cost": 76,
+      "nodes": {
+        "mst": 49238,
+        "farthest": 85924,
+        "none": 119011
+      },
+      "ms": {
+        "mst": 89.70829800000502,
+        "farthest": 145.57989100001123,
+        "none": 118.26339000003827
+      }
+    }
+  ],
+  "repeats": 5
+}
