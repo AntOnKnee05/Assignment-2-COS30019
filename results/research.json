@@ -1,0 +1,4481 @@
+{
+ "heuristic": [
+  {
+   "case": "test01_spec_example.txt",
+   "optimal": 10,
+   "scale": 1.0,
+   "raw_cost": 10,
+   "raw_nodes": 9,
+   "scaled_cost": 10,
+   "scaled_nodes": 9
+  },
+  {
+   "case": "test02_origin_is_goal.txt",
+   "optimal": 0,
+   "scale": 1.0,
+   "raw_cost": 0,
+   "raw_nodes": 1,
+   "scaled_cost": 0,
+   "scaled_nodes": 1
+  },
+  {
+   "case": "test03_unreachable.txt",
+   "optimal": null,
+   "scale": 1.0,
+   "raw_cost": null,
+   "raw_nodes": 3,
+   "scaled_cost": null,
+   "scaled_nodes": 3
+  },
+  {
+   "case": "test04_one_way_edge.txt",
+   "optimal": 11,
+   "scale": 0.5,
+   "raw_cost": 11,
+   "raw_nodes": 3,
+   "scaled_cost": 11,
+   "scaled_nodes": 3
+  },
+  {
+   "case": "test05_tie_break_ascending.txt",
+   "optimal": 2,
+   "scale": 0.7071,
+   "raw_cost": 2,
+   "raw_nodes": 4,
+   "scaled_cost": 2,
+   "scaled_nodes": 5
+  },
+  {
+   "case": "test06_cheap_long_vs_short_expensive.txt",
+   "optimal": 3,
+   "scale": 1.0,
+   "raw_cost": 3,
+   "raw_nodes": 5,
+   "scaled_cost": 3,
+   "scaled_nodes": 5
+  },
+  {
+   "case": "test07_multiple_destinations.txt",
+   "optimal": 4,
+   "scale": 0.4851,
+   "raw_cost": 5,
+   "raw_nodes": 4,
+   "scaled_cost": 4,
+   "scaled_nodes": 5
+  },
+  {
+   "case": "test08_cycle_trap.txt",
+   "optimal": 7,
+   "scale": 1.0,
+   "raw_cost": 7,
+   "raw_nodes": 6,
+   "scaled_cost": 7,
+   "scaled_nodes": 6
+  },
+  {
+   "case": "test09_dfs_deep_branch.txt",
+   "optimal": 3,
+   "scale": 1.0,
+   "raw_cost": 3,
+   "raw_nodes": 3,
+   "scaled_cost": 3,
+   "scaled_nodes": 3
+  },
+  {
+   "case": "test10_greedy_trap.txt",
+   "optimal": 18,
+   "scale": 1.0,
+   "raw_cost": 18,
+   "raw_nodes": 6,
+   "scaled_cost": 18,
+   "scaled_nodes": 6
+  },
+  {
+   "case": "test11_inadmissible_heuristic.txt",
+   "optimal": 2,
+   "scale": 0.0781,
+   "raw_cost": 12,
+   "raw_nodes": 3,
+   "scaled_cost": 2,
+   "scaled_nodes": 4
+  },
+  {
+   "case": "test12_dead_ends.txt",
+   "optimal": 6,
+   "scale": 1.0,
+   "raw_cost": 6,
+   "raw_nodes": 7,
+   "scaled_cost": 6,
+   "scaled_nodes": 7
+  },
+  {
+   "case": "test13_large_grid.txt",
+   "optimal": 17,
+   "scale": 1.0,
+   "raw_cost": 17,
+   "raw_nodes": 299,
+   "scaled_cost": 17,
+   "scaled_nodes": 299
+  },
+  {
+   "case": "test14_decimal_values.txt",
+   "optimal": 4.4,
+   "scale": 1.0,
+   "raw_cost": 4.4,
+   "raw_nodes": 4,
+   "scaled_cost": 4.4,
+   "scaled_nodes": 4
+  },
+  {
+   "case": "test15_equal_cost_tie.txt",
+   "optimal": 4,
+   "scale": 1.0,
+   "raw_cost": 4,
+   "raw_nodes": 5,
+   "scaled_cost": 4,
+   "scaled_nodes": 5
+  }
+ ],
+ "scalability": [
+  {
+   "n": 10,
+   "instance": 0,
+   "method": "DFS",
+   "nodes": 24,
+   "ms": 0.0127650000081303,
+   "cost_ratio": 2.019047619047619,
+   "moves_ratio": 3.0
+  },
+  {
+   "n": 10,
+   "instance": 0,
+   "method": "BFS",
+   "nodes": 9,
+   "ms": 0.005362000024433655,
+   "cost_ratio": 1.1142857142857143,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 0,
+   "method": "GBFS",
+   "nodes": 10,
+   "ms": 0.010768000009875323,
+   "cost_ratio": 1.0857142857142856,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 0,
+   "method": "AS",
+   "nodes": 14,
+   "ms": 0.034722999998848536,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 10,
+   "instance": 0,
+   "method": "CUS1",
+   "nodes": 13,
+   "ms": 0.010968999987426287,
+   "cost_ratio": 1.1142857142857143,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 0,
+   "method": "CUS2",
+   "nodes": 34,
+   "ms": 0.05140600001141138,
+   "cost_ratio": 1.1142857142857143,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 1,
+   "method": "DFS",
+   "nodes": 8,
+   "ms": 0.003720000023577086,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 1,
+   "method": "BFS",
+   "nodes": 11,
+   "ms": 0.0037080000083733466,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 1,
+   "method": "GBFS",
+   "nodes": 8,
+   "ms": 0.008896000025515605,
+   "cost_ratio": 1.117117117117117,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 1,
+   "method": "AS",
+   "nodes": 16,
+   "ms": 0.023249000008718212,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 1,
+   "method": "CUS1",
+   "nodes": 18,
+   "ms": 0.012724999976398976,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 1,
+   "method": "CUS2",
+   "nodes": 52,
+   "ms": 0.054295000012416494,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 2,
+   "method": "DFS",
+   "nodes": 16,
+   "ms": 0.006401000007372204,
+   "cost_ratio": 1.1653543307086613,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 2,
+   "method": "BFS",
+   "nodes": 28,
+   "ms": 0.007719999985056347,
+   "cost_ratio": 1.1653543307086613,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 2,
+   "method": "GBFS",
+   "nodes": 14,
+   "ms": 0.0140319999957228,
+   "cost_ratio": 1.1653543307086613,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 2,
+   "method": "AS",
+   "nodes": 63,
+   "ms": 0.06880799998043585,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 2,
+   "method": "CUS1",
+   "nodes": 38,
+   "ms": 0.02939399999490888,
+   "cost_ratio": 1.1653543307086613,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 2,
+   "method": "CUS2",
+   "nodes": 415,
+   "ms": 0.44411300001456766,
+   "cost_ratio": 1.1653543307086613,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 3,
+   "method": "DFS",
+   "nodes": 29,
+   "ms": 0.014970999984598166,
+   "cost_ratio": 3.146067415730337,
+   "moves_ratio": 4.0
+  },
+  {
+   "n": 10,
+   "instance": 3,
+   "method": "BFS",
+   "nodes": 5,
+   "ms": 0.0024240000016106933,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 3,
+   "method": "GBFS",
+   "nodes": 6,
+   "ms": 0.0061920000007376075,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 3,
+   "method": "AS",
+   "nodes": 6,
+   "ms": 0.016509000005271446,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 3,
+   "method": "CUS1",
+   "nodes": 8,
+   "ms": 0.006224999992809899,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 3,
+   "method": "CUS2",
+   "nodes": 7,
+   "ms": 0.015254999993885576,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 4,
+   "method": "DFS",
+   "nodes": 13,
+   "ms": 0.006105000011302764,
+   "cost_ratio": 1.486842105263158,
+   "moves_ratio": 2.0
+  },
+  {
+   "n": 10,
+   "instance": 4,
+   "method": "BFS",
+   "nodes": 13,
+   "ms": 0.004375999992589641,
+   "cost_ratio": 1.013157894736842,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 4,
+   "method": "GBFS",
+   "nodes": 8,
+   "ms": 0.009142999999767198,
+   "cost_ratio": 1.013157894736842,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 4,
+   "method": "AS",
+   "nodes": 19,
+   "ms": 0.026813999994601545,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 10,
+   "instance": 4,
+   "method": "CUS1",
+   "nodes": 18,
+   "ms": 0.015998000009176394,
+   "cost_ratio": 1.013157894736842,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 4,
+   "method": "CUS2",
+   "nodes": 52,
+   "ms": 0.05457099999262027,
+   "cost_ratio": 1.013157894736842,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 5,
+   "method": "DFS",
+   "nodes": 21,
+   "ms": 0.010322999997924853,
+   "cost_ratio": 1.1013824884792627,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 10,
+   "instance": 5,
+   "method": "BFS",
+   "nodes": 21,
+   "ms": 0.006712000015340891,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 5,
+   "method": "GBFS",
+   "nodes": 42,
+   "ms": 0.034451999994189464,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 5,
+   "method": "AS",
+   "nodes": 83,
+   "ms": 0.07956999999692016,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 5,
+   "method": "CUS1",
+   "nodes": 81,
+   "ms": 0.0604889999920033,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 5,
+   "method": "CUS2",
+   "nodes": 234,
+   "ms": 0.2605509999966671,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 6,
+   "method": "DFS",
+   "nodes": 29,
+   "ms": 0.015885000010484873,
+   "cost_ratio": 4.309859154929577,
+   "moves_ratio": 4.0
+  },
+  {
+   "n": 10,
+   "instance": 6,
+   "method": "BFS",
+   "nodes": 18,
+   "ms": 0.005785000013247554,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 6,
+   "method": "GBFS",
+   "nodes": 10,
+   "ms": 0.010376000005862807,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 6,
+   "method": "AS",
+   "nodes": 13,
+   "ms": 0.022631000007322655,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 6,
+   "method": "CUS1",
+   "nodes": 24,
+   "ms": 0.020092999989174132,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 6,
+   "method": "CUS2",
+   "nodes": 81,
+   "ms": 0.08762500002035267,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 7,
+   "method": "DFS",
+   "nodes": 5,
+   "ms": 0.002253000019436513,
+   "cost_ratio": 1.015625,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 7,
+   "method": "BFS",
+   "nodes": 2,
+   "ms": 0.001186999980973269,
+   "cost_ratio": 1.015625,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 7,
+   "method": "GBFS",
+   "nodes": 5,
+   "ms": 0.005633000000671018,
+   "cost_ratio": 1.015625,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 7,
+   "method": "AS",
+   "nodes": 14,
+   "ms": 0.023379999987582778,
+   "cost_ratio": 1.0,
+   "moves_ratio": 2.0
+  },
+  {
+   "n": 10,
+   "instance": 7,
+   "method": "CUS1",
+   "nodes": 3,
+   "ms": 0.0023909999811166927,
+   "cost_ratio": 1.015625,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 7,
+   "method": "CUS2",
+   "nodes": 7,
+   "ms": 0.01466999998456231,
+   "cost_ratio": 1.015625,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 8,
+   "method": "DFS",
+   "nodes": 15,
+   "ms": 0.006563999988884461,
+   "cost_ratio": 1.0780141843971631,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 8,
+   "method": "BFS",
+   "nodes": 21,
+   "ms": 0.006474999992178709,
+   "cost_ratio": 1.0780141843971631,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 8,
+   "method": "GBFS",
+   "nodes": 20,
+   "ms": 0.021180000004505928,
+   "cost_ratio": 1.2269503546099292,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 8,
+   "method": "AS",
+   "nodes": 38,
+   "ms": 0.048332999995182035,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 8,
+   "method": "CUS1",
+   "nodes": 62,
+   "ms": 0.05397200001766578,
+   "cost_ratio": 1.0780141843971631,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 8,
+   "method": "CUS2",
+   "nodes": 427,
+   "ms": 0.5023960000016814,
+   "cost_ratio": 1.0780141843971631,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 9,
+   "method": "DFS",
+   "nodes": 14,
+   "ms": 0.0076270000022304885,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 9,
+   "method": "BFS",
+   "nodes": 19,
+   "ms": 0.005598999990752418,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 9,
+   "method": "GBFS",
+   "nodes": 14,
+   "ms": 0.017788999997492283,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 9,
+   "method": "AS",
+   "nodes": 22,
+   "ms": 0.038541999998642495,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 9,
+   "method": "CUS1",
+   "nodes": 27,
+   "ms": 0.020490999986577663,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 9,
+   "method": "CUS2",
+   "nodes": 70,
+   "ms": 0.07784600001059516,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 10,
+   "method": "DFS",
+   "nodes": 24,
+   "ms": 0.015014000013024997,
+   "cost_ratio": 2.1838235294117645,
+   "moves_ratio": 2.3333333333333335
+  },
+  {
+   "n": 10,
+   "instance": 10,
+   "method": "BFS",
+   "nodes": 17,
+   "ms": 0.006963000004134301,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 10,
+   "method": "GBFS",
+   "nodes": 13,
+   "ms": 0.014018000001669861,
+   "cost_ratio": 1.0220588235294117,
+   "moves_ratio": 1.3333333333333333
+  },
+  {
+   "n": 10,
+   "instance": 10,
+   "method": "AS",
+   "nodes": 25,
+   "ms": 0.033116999986759765,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 10,
+   "method": "CUS1",
+   "nodes": 46,
+   "ms": 0.042087999986506475,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 10,
+   "method": "CUS2",
+   "nodes": 110,
+   "ms": 0.11521100000777551,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 11,
+   "method": "DFS",
+   "nodes": 6,
+   "ms": 0.0026120000029550283,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 11,
+   "method": "BFS",
+   "nodes": 2,
+   "ms": 0.0012849999961872527,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 11,
+   "method": "GBFS",
+   "nodes": 6,
+   "ms": 0.006862000020646519,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 11,
+   "method": "AS",
+   "nodes": 6,
+   "ms": 0.017205000006015325,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 11,
+   "method": "CUS1",
+   "nodes": 3,
+   "ms": 0.002320999982430294,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 10,
+   "instance": 11,
+   "method": "CUS2",
+   "nodes": 8,
+   "ms": 0.017157000002043787,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 0,
+   "method": "DFS",
+   "nodes": 38,
+   "ms": 0.022527999988142255,
+   "cost_ratio": 5.582089552238806,
+   "moves_ratio": 4.0
+  },
+  {
+   "n": 20,
+   "instance": 0,
+   "method": "BFS",
+   "nodes": 20,
+   "ms": 0.006138999992799654,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 0,
+   "method": "GBFS",
+   "nodes": 11,
+   "ms": 0.01327900000092086,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 0,
+   "method": "AS",
+   "nodes": 29,
+   "ms": 0.05314899999575573,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 0,
+   "method": "CUS1",
+   "nodes": 50,
+   "ms": 0.03798599999527141,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 0,
+   "method": "CUS2",
+   "nodes": 204,
+   "ms": 0.25357299998063354,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 1,
+   "method": "DFS",
+   "nodes": 5055,
+   "ms": 2.9538920000220514,
+   "cost_ratio": 2.2666666666666666,
+   "moves_ratio": 2.0
+  },
+  {
+   "n": 20,
+   "instance": 1,
+   "method": "BFS",
+   "nodes": 36,
+   "ms": 0.010685999995985185,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 1,
+   "method": "GBFS",
+   "nodes": 16,
+   "ms": 0.016603999995368213,
+   "cost_ratio": 1.011111111111111,
+   "moves_ratio": 1.3333333333333333
+  },
+  {
+   "n": 20,
+   "instance": 1,
+   "method": "AS",
+   "nodes": 38,
+   "ms": 0.05572499998152125,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 1,
+   "method": "CUS1",
+   "nodes": 66,
+   "ms": 0.057396000016751714,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 1,
+   "method": "CUS2",
+   "nodes": 75,
+   "ms": 0.07959199999163502,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 2,
+   "method": "DFS",
+   "nodes": 31,
+   "ms": 0.01408800000035626,
+   "cost_ratio": 1.9047619047619047,
+   "moves_ratio": 1.3333333333333333
+  },
+  {
+   "n": 20,
+   "instance": 2,
+   "method": "BFS",
+   "nodes": 20,
+   "ms": 0.00666799999748946,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 2,
+   "method": "GBFS",
+   "nodes": 12,
+   "ms": 0.012409999982310183,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 2,
+   "method": "AS",
+   "nodes": 12,
+   "ms": 0.02923799999621224,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 2,
+   "method": "CUS1",
+   "nodes": 29,
+   "ms": 0.023826000017379556,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 2,
+   "method": "CUS2",
+   "nodes": 112,
+   "ms": 0.1209039999992001,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 3,
+   "method": "DFS",
+   "nodes": 18,
+   "ms": 0.008159000003615802,
+   "cost_ratio": 1.25,
+   "moves_ratio": 1.25
+  },
+  {
+   "n": 20,
+   "instance": 3,
+   "method": "BFS",
+   "nodes": 20,
+   "ms": 0.00610899999742287,
+   "cost_ratio": 1.1339285714285714,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 3,
+   "method": "GBFS",
+   "nodes": 15,
+   "ms": 0.0152629999945475,
+   "cost_ratio": 1.1339285714285714,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 3,
+   "method": "AS",
+   "nodes": 69,
+   "ms": 0.08017700000095829,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 3,
+   "method": "CUS1",
+   "nodes": 88,
+   "ms": 0.07232499999076936,
+   "cost_ratio": 1.1339285714285714,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 3,
+   "method": "CUS2",
+   "nodes": 250,
+   "ms": 0.2541090000249824,
+   "cost_ratio": 1.1339285714285714,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 4,
+   "method": "DFS",
+   "nodes": 41,
+   "ms": 0.02051700002425605,
+   "cost_ratio": 1.9017857142857142,
+   "moves_ratio": 1.8
+  },
+  {
+   "n": 20,
+   "instance": 4,
+   "method": "BFS",
+   "nodes": 57,
+   "ms": 0.015997000019751795,
+   "cost_ratio": 1.1517857142857142,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 4,
+   "method": "GBFS",
+   "nodes": 24,
+   "ms": 0.02407399998105575,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 4,
+   "method": "AS",
+   "nodes": 86,
+   "ms": 0.09923299998604307,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 4,
+   "method": "CUS1",
+   "nodes": 338,
+   "ms": 0.29390500000658903,
+   "cost_ratio": 1.1517857142857142,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 4,
+   "method": "CUS2",
+   "nodes": 4505,
+   "ms": 4.33306400000788,
+   "cost_ratio": 1.1517857142857142,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 5,
+   "method": "DFS",
+   "nodes": 32,
+   "ms": 0.014423999999735315,
+   "cost_ratio": 1.5789473684210527,
+   "moves_ratio": 2.3333333333333335
+  },
+  {
+   "n": 20,
+   "instance": 5,
+   "method": "BFS",
+   "nodes": 34,
+   "ms": 0.009131000012985169,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 5,
+   "method": "GBFS",
+   "nodes": 12,
+   "ms": 0.012430999987600444,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 5,
+   "method": "AS",
+   "nodes": 71,
+   "ms": 0.07860599998821272,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 5,
+   "method": "CUS1",
+   "nodes": 79,
+   "ms": 0.05926699998326512,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 5,
+   "method": "CUS2",
+   "nodes": 110,
+   "ms": 0.11068399999203393,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 6,
+   "method": "DFS",
+   "nodes": 13,
+   "ms": 0.005592000007936804,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 20,
+   "instance": 6,
+   "method": "BFS",
+   "nodes": 13,
+   "ms": 0.0040359999786687695,
+   "cost_ratio": 1.0357142857142858,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 6,
+   "method": "GBFS",
+   "nodes": 9,
+   "ms": 0.009538000000475222,
+   "cost_ratio": 1.0357142857142858,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 6,
+   "method": "AS",
+   "nodes": 13,
+   "ms": 0.03320499999404092,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 20,
+   "instance": 6,
+   "method": "CUS1",
+   "nodes": 17,
+   "ms": 0.013239999987035844,
+   "cost_ratio": 1.0357142857142858,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 6,
+   "method": "CUS2",
+   "nodes": 38,
+   "ms": 0.05025699999805511,
+   "cost_ratio": 1.0357142857142858,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 7,
+   "method": "DFS",
+   "nodes": 21,
+   "ms": 0.010203000016417718,
+   "cost_ratio": 1.5157894736842106,
+   "moves_ratio": 2.0
+  },
+  {
+   "n": 20,
+   "instance": 7,
+   "method": "BFS",
+   "nodes": 28,
+   "ms": 0.00801299998443028,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 7,
+   "method": "GBFS",
+   "nodes": 15,
+   "ms": 0.015305999994552622,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 7,
+   "method": "AS",
+   "nodes": 29,
+   "ms": 0.0500799999940682,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 7,
+   "method": "CUS1",
+   "nodes": 53,
+   "ms": 0.042062999995096106,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 7,
+   "method": "CUS2",
+   "nodes": 228,
+   "ms": 0.22495199999639226,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 8,
+   "method": "DFS",
+   "nodes": 16,
+   "ms": 0.008407999985138304,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 8,
+   "method": "BFS",
+   "nodes": 37,
+   "ms": 0.010148999990633456,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 8,
+   "method": "GBFS",
+   "nodes": 16,
+   "ms": 0.015135000012378441,
+   "cost_ratio": 1.031496062992126,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 8,
+   "method": "AS",
+   "nodes": 69,
+   "ms": 0.07862900000077389,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 8,
+   "method": "CUS1",
+   "nodes": 149,
+   "ms": 0.11729100000934523,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 8,
+   "method": "CUS2",
+   "nodes": 670,
+   "ms": 0.6016600000009475,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 9,
+   "method": "DFS",
+   "nodes": 113,
+   "ms": 0.05861199997525546,
+   "cost_ratio": 1.462962962962963,
+   "moves_ratio": 1.4285714285714286
+  },
+  {
+   "n": 20,
+   "instance": 9,
+   "method": "BFS",
+   "nodes": 62,
+   "ms": 0.020135999989179254,
+   "cost_ratio": 1.4197530864197532,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 9,
+   "method": "GBFS",
+   "nodes": 33,
+   "ms": 0.03965499999480926,
+   "cost_ratio": 1.0740740740740742,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 9,
+   "method": "AS",
+   "nodes": 223,
+   "ms": 0.23367900001858288,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.1428571428571428
+  },
+  {
+   "n": 20,
+   "instance": 9,
+   "method": "CUS1",
+   "nodes": 1238,
+   "ms": 1.0317649999933565,
+   "cost_ratio": 1.4197530864197532,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 9,
+   "method": "CUS2",
+   "nodes": 9296,
+   "ms": 8.951480999996875,
+   "cost_ratio": 1.4197530864197532,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 10,
+   "method": "DFS",
+   "nodes": 471,
+   "ms": 0.24710600001753846,
+   "cost_ratio": 1.5174825174825175,
+   "moves_ratio": 1.4
+  },
+  {
+   "n": 20,
+   "instance": 10,
+   "method": "BFS",
+   "nodes": 55,
+   "ms": 0.0152270000057797,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 10,
+   "method": "GBFS",
+   "nodes": 23,
+   "ms": 0.025375999996413157,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 10,
+   "method": "AS",
+   "nodes": 81,
+   "ms": 0.09382100000721039,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 10,
+   "method": "CUS1",
+   "nodes": 517,
+   "ms": 0.435439000000315,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 10,
+   "method": "CUS2",
+   "nodes": 2239,
+   "ms": 2.177796000012222,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 11,
+   "method": "DFS",
+   "nodes": 205,
+   "ms": 0.09977499999536121,
+   "cost_ratio": 1.6083916083916083,
+   "moves_ratio": 2.0
+  },
+  {
+   "n": 20,
+   "instance": 11,
+   "method": "BFS",
+   "nodes": 39,
+   "ms": 0.011102999991408069,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 11,
+   "method": "GBFS",
+   "nodes": 281,
+   "ms": 0.2201100000149836,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 11,
+   "method": "AS",
+   "nodes": 108,
+   "ms": 0.11779099997966114,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 11,
+   "method": "CUS1",
+   "nodes": 131,
+   "ms": 0.10333499997727813,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 20,
+   "instance": 11,
+   "method": "CUS2",
+   "nodes": 282,
+   "ms": 0.27847800001268297,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 0,
+   "method": "DFS",
+   "nodes": 40,
+   "ms": 0.022368000003325506,
+   "cost_ratio": 1.1496598639455782,
+   "moves_ratio": 1.4285714285714286
+  },
+  {
+   "n": 30,
+   "instance": 0,
+   "method": "BFS",
+   "nodes": 42,
+   "ms": 0.012381000004779708,
+   "cost_ratio": 1.0476190476190477,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 0,
+   "method": "GBFS",
+   "nodes": 25,
+   "ms": 0.02824399999212801,
+   "cost_ratio": 1.1156462585034013,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 0,
+   "method": "AS",
+   "nodes": 223,
+   "ms": 0.24889400000915884,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.2857142857142858
+  },
+  {
+   "n": 30,
+   "instance": 0,
+   "method": "CUS1",
+   "nodes": 519,
+   "ms": 0.47294300000544354,
+   "cost_ratio": 1.0476190476190477,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 0,
+   "method": "CUS2",
+   "nodes": 3227,
+   "ms": 3.4616789999972752,
+   "cost_ratio": 1.0476190476190477,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 1,
+   "method": "DFS",
+   "nodes": 40,
+   "ms": 0.02087999999389467,
+   "cost_ratio": 1.0962962962962963,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 30,
+   "instance": 1,
+   "method": "BFS",
+   "nodes": 76,
+   "ms": 0.021970999995346574,
+   "cost_ratio": 1.0148148148148148,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 1,
+   "method": "GBFS",
+   "nodes": 24,
+   "ms": 0.0264440000137256,
+   "cost_ratio": 1.0222222222222221,
+   "moves_ratio": 1.1666666666666667
+  },
+  {
+   "n": 30,
+   "instance": 1,
+   "method": "AS",
+   "nodes": 201,
+   "ms": 0.24791800001366937,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.1666666666666667
+  },
+  {
+   "n": 30,
+   "instance": 1,
+   "method": "CUS1",
+   "nodes": 607,
+   "ms": 0.5347219999976005,
+   "cost_ratio": 1.0148148148148148,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 1,
+   "method": "CUS2",
+   "nodes": 2948,
+   "ms": 2.9145729999981995,
+   "cost_ratio": 1.0148148148148148,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 2,
+   "method": "DFS",
+   "nodes": 6584,
+   "ms": 3.9946320000012747,
+   "cost_ratio": 1.2346938775510203,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 2,
+   "method": "BFS",
+   "nodes": 50,
+   "ms": 0.014504999995779144,
+   "cost_ratio": 1.2346938775510203,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 2,
+   "method": "GBFS",
+   "nodes": 17,
+   "ms": 0.01728099999809274,
+   "cost_ratio": 1.010204081632653,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 2,
+   "method": "AS",
+   "nodes": 55,
+   "ms": 0.08216800000582225,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.25
+  },
+  {
+   "n": 30,
+   "instance": 2,
+   "method": "CUS1",
+   "nodes": 118,
+   "ms": 0.09956700000657293,
+   "cost_ratio": 1.2346938775510203,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 2,
+   "method": "CUS2",
+   "nodes": 500,
+   "ms": 0.5333780000000843,
+   "cost_ratio": 1.2346938775510203,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 3,
+   "method": "DFS",
+   "nodes": 44,
+   "ms": 0.025614999998424537,
+   "cost_ratio": 1.6794871794871795,
+   "moves_ratio": 2.0
+  },
+  {
+   "n": 30,
+   "instance": 3,
+   "method": "BFS",
+   "nodes": 64,
+   "ms": 0.01827299999490606,
+   "cost_ratio": 1.0064102564102564,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 3,
+   "method": "GBFS",
+   "nodes": 25,
+   "ms": 0.03723399998989407,
+   "cost_ratio": 1.1794871794871795,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 3,
+   "method": "AS",
+   "nodes": 253,
+   "ms": 0.3071220000094854,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.1666666666666667
+  },
+  {
+   "n": 30,
+   "instance": 3,
+   "method": "CUS1",
+   "nodes": 669,
+   "ms": 0.5702459999952225,
+   "cost_ratio": 1.0064102564102564,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 3,
+   "method": "CUS2",
+   "nodes": 2895,
+   "ms": 2.9486620000227504,
+   "cost_ratio": 1.0064102564102564,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 4,
+   "method": "DFS",
+   "nodes": 70,
+   "ms": 0.05948899999452806,
+   "cost_ratio": 2.2533333333333334,
+   "moves_ratio": 3.8
+  },
+  {
+   "n": 30,
+   "instance": 4,
+   "method": "BFS",
+   "nodes": 57,
+   "ms": 0.025319999991779696,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 4,
+   "method": "GBFS",
+   "nodes": 79,
+   "ms": 0.08470900002066628,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.8
+  },
+  {
+   "n": 30,
+   "instance": 4,
+   "method": "AS",
+   "nodes": 212,
+   "ms": 0.32531899998389235,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.8
+  },
+  {
+   "n": 30,
+   "instance": 4,
+   "method": "CUS1",
+   "nodes": 374,
+   "ms": 0.3632110000069133,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 4,
+   "method": "CUS2",
+   "nodes": 2714,
+   "ms": 3.005838999996513,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 5,
+   "method": "DFS",
+   "nodes": 116,
+   "ms": 0.08174300000973744,
+   "cost_ratio": 1.3511450381679388,
+   "moves_ratio": 1.6666666666666667
+  },
+  {
+   "n": 30,
+   "instance": 5,
+   "method": "BFS",
+   "nodes": 60,
+   "ms": 0.023192999975663042,
+   "cost_ratio": 1.1374045801526718,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 5,
+   "method": "GBFS",
+   "nodes": 25,
+   "ms": 0.025695000005043767,
+   "cost_ratio": 1.1297709923664123,
+   "moves_ratio": 1.1666666666666667
+  },
+  {
+   "n": 30,
+   "instance": 5,
+   "method": "AS",
+   "nodes": 234,
+   "ms": 0.2745179999976699,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 5,
+   "method": "CUS1",
+   "nodes": 738,
+   "ms": 0.6200039999839646,
+   "cost_ratio": 1.1374045801526718,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 5,
+   "method": "CUS2",
+   "nodes": 3431,
+   "ms": 3.4115960000065115,
+   "cost_ratio": 1.1374045801526718,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 6,
+   "method": "DFS",
+   "nodes": 17,
+   "ms": 0.008898000004364803,
+   "cost_ratio": 3.517857142857143,
+   "moves_ratio": 2.5
+  },
+  {
+   "n": 30,
+   "instance": 6,
+   "method": "BFS",
+   "nodes": 12,
+   "ms": 0.0052119999907063175,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 6,
+   "method": "GBFS",
+   "nodes": 10,
+   "ms": 0.013231999986373921,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 6,
+   "method": "AS",
+   "nodes": 10,
+   "ms": 0.04178399998977511,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 6,
+   "method": "CUS1",
+   "nodes": 17,
+   "ms": 0.014735999997128602,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 6,
+   "method": "CUS2",
+   "nodes": 22,
+   "ms": 0.05588700000203062,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 7,
+   "method": "DFS",
+   "nodes": 35,
+   "ms": 0.023083999991513338,
+   "cost_ratio": 1.3522012578616351,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 30,
+   "instance": 7,
+   "method": "BFS",
+   "nodes": 57,
+   "ms": 0.021562999990010212,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 7,
+   "method": "GBFS",
+   "nodes": 26,
+   "ms": 0.03184999999916727,
+   "cost_ratio": 1.0628930817610063,
+   "moves_ratio": 1.1666666666666667
+  },
+  {
+   "n": 30,
+   "instance": 7,
+   "method": "AS",
+   "nodes": 1257,
+   "ms": 1.3293920000023718,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 7,
+   "method": "CUS1",
+   "nodes": 678,
+   "ms": 0.7079089999990629,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 7,
+   "method": "CUS2",
+   "nodes": 8721,
+   "ms": 8.217389999998659,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 8,
+   "method": "DFS",
+   "nodes": 61,
+   "ms": 0.03838899999664136,
+   "cost_ratio": 1.6072874493927125,
+   "moves_ratio": 1.4545454545454546
+  },
+  {
+   "n": 30,
+   "instance": 8,
+   "method": "BFS",
+   "nodes": 78,
+   "ms": 0.021959000008564544,
+   "cost_ratio": 1.1012145748987854,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 8,
+   "method": "GBFS",
+   "nodes": 138,
+   "ms": 0.1355729999943378,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 8,
+   "method": "AS",
+   "nodes": 2720,
+   "ms": 3.0503459999806637,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 8,
+   "method": "CUS1",
+   "nodes": 19756,
+   "ms": 18.516379999994115,
+   "cost_ratio": 1.1012145748987854,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 8,
+   "method": "CUS2",
+   "nodes": 75446,
+   "ms": 77.50805099999525,
+   "cost_ratio": 1.1012145748987854,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 9,
+   "method": "DFS",
+   "nodes": 58,
+   "ms": 0.0317200000097273,
+   "cost_ratio": 1.0176470588235293,
+   "moves_ratio": 1.1428571428571428
+  },
+  {
+   "n": 30,
+   "instance": 9,
+   "method": "BFS",
+   "nodes": 43,
+   "ms": 0.012808999997560022,
+   "cost_ratio": 1.0235294117647058,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 9,
+   "method": "GBFS",
+   "nodes": 33,
+   "ms": 0.03290899999797148,
+   "cost_ratio": 1.011764705882353,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 9,
+   "method": "AS",
+   "nodes": 897,
+   "ms": 0.8997550000060528,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.2857142857142858
+  },
+  {
+   "n": 30,
+   "instance": 9,
+   "method": "CUS1",
+   "nodes": 688,
+   "ms": 0.6263129999979355,
+   "cost_ratio": 1.0235294117647058,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 9,
+   "method": "CUS2",
+   "nodes": 5634,
+   "ms": 5.93272399999023,
+   "cost_ratio": 1.0235294117647058,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 10,
+   "method": "DFS",
+   "nodes": 2243,
+   "ms": 1.823004999977229,
+   "cost_ratio": 1.6830985915492958,
+   "moves_ratio": 2.0
+  },
+  {
+   "n": 30,
+   "instance": 10,
+   "method": "BFS",
+   "nodes": 54,
+   "ms": 0.023940999994920276,
+   "cost_ratio": 1.0422535211267605,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 10,
+   "method": "GBFS",
+   "nodes": 62,
+   "ms": 0.05612399999677109,
+   "cost_ratio": 1.0422535211267605,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 10,
+   "method": "AS",
+   "nodes": 354,
+   "ms": 0.40368699998794,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 10,
+   "method": "CUS1",
+   "nodes": 254,
+   "ms": 0.20835600000168597,
+   "cost_ratio": 1.0422535211267605,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 10,
+   "method": "CUS2",
+   "nodes": 1428,
+   "ms": 1.3863160000084918,
+   "cost_ratio": 1.0422535211267605,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 11,
+   "method": "DFS",
+   "nodes": 194,
+   "ms": 0.10239900001351998,
+   "cost_ratio": 1.2601626016260163,
+   "moves_ratio": 1.6
+  },
+  {
+   "n": 30,
+   "instance": 11,
+   "method": "BFS",
+   "nodes": 35,
+   "ms": 0.010775000021112646,
+   "cost_ratio": 1.0975609756097562,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 11,
+   "method": "GBFS",
+   "nodes": 21,
+   "ms": 0.028567000015300437,
+   "cost_ratio": 1.0975609756097562,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 11,
+   "method": "AS",
+   "nodes": 83,
+   "ms": 0.13466999999423024,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.2
+  },
+  {
+   "n": 30,
+   "instance": 11,
+   "method": "CUS1",
+   "nodes": 316,
+   "ms": 0.23426800001402626,
+   "cost_ratio": 1.0975609756097562,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 30,
+   "instance": 11,
+   "method": "CUS2",
+   "nodes": 428,
+   "ms": 0.6116850000239538,
+   "cost_ratio": 1.0975609756097562,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 0,
+   "method": "DFS",
+   "nodes": 2285,
+   "ms": 1.6682449999905202,
+   "cost_ratio": 2.281609195402299,
+   "moves_ratio": 2.125
+  },
+  {
+   "n": 40,
+   "instance": 0,
+   "method": "BFS",
+   "nodes": 101,
+   "ms": 0.029126000015367026,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 0,
+   "method": "GBFS",
+   "nodes": 30,
+   "ms": 0.031465999995816674,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 0,
+   "method": "AS",
+   "nodes": 185,
+   "ms": 0.2305200000023433,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 0,
+   "method": "CUS1",
+   "nodes": 3274,
+   "ms": 3.0271070000083,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 0,
+   "method": "CUS2",
+   "nodes": 12079,
+   "ms": 12.401340999986132,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 1,
+   "method": "DFS",
+   "nodes": 52,
+   "ms": 0.030574999982491136,
+   "cost_ratio": 1.4028776978417266,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 40,
+   "instance": 1,
+   "method": "BFS",
+   "nodes": 91,
+   "ms": 0.02631800001040574,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 1,
+   "method": "GBFS",
+   "nodes": 32,
+   "ms": 0.03394300000536532,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 1,
+   "method": "AS",
+   "nodes": 1432,
+   "ms": 1.5917560000104913,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 1,
+   "method": "CUS1",
+   "nodes": 4508,
+   "ms": 3.973905999998806,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 1,
+   "method": "CUS2",
+   "nodes": 34444,
+   "ms": 33.41249400000379,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 2,
+   "method": "DFS",
+   "nodes": 108,
+   "ms": 0.08391899999082852,
+   "cost_ratio": 4.87037037037037,
+   "moves_ratio": 4.285714285714286
+  },
+  {
+   "n": 40,
+   "instance": 2,
+   "method": "BFS",
+   "nodes": 108,
+   "ms": 0.02901900001006652,
+   "cost_ratio": 1.0925925925925926,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 2,
+   "method": "GBFS",
+   "nodes": 39,
+   "ms": 0.03756899999984853,
+   "cost_ratio": 1.0925925925925926,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 2,
+   "method": "AS",
+   "nodes": 268,
+   "ms": 0.2961440000035509,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 2,
+   "method": "CUS1",
+   "nodes": 950,
+   "ms": 0.7802240000103211,
+   "cost_ratio": 1.0925925925925926,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 2,
+   "method": "CUS2",
+   "nodes": 16750,
+   "ms": 19.367601999988437,
+   "cost_ratio": 1.0925925925925926,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 3,
+   "method": "DFS",
+   "nodes": 47,
+   "ms": 0.031864999982644804,
+   "cost_ratio": 1.797979797979798,
+   "moves_ratio": 2.2
+  },
+  {
+   "n": 40,
+   "instance": 3,
+   "method": "BFS",
+   "nodes": 47,
+   "ms": 0.020684000020310123,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 3,
+   "method": "GBFS",
+   "nodes": 18,
+   "ms": 0.02662699998268181,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 3,
+   "method": "AS",
+   "nodes": 96,
+   "ms": 0.1788259999955244,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 3,
+   "method": "CUS1",
+   "nodes": 224,
+   "ms": 0.25170799997908944,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 3,
+   "method": "CUS2",
+   "nodes": 773,
+   "ms": 1.0294020000003457,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 4,
+   "method": "DFS",
+   "nodes": 69,
+   "ms": 0.05706799998961287,
+   "cost_ratio": 2.006622516556291,
+   "moves_ratio": 2.0
+  },
+  {
+   "n": 40,
+   "instance": 4,
+   "method": "BFS",
+   "nodes": 105,
+   "ms": 0.04362300001048425,
+   "cost_ratio": 1.099337748344371,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 4,
+   "method": "GBFS",
+   "nodes": 32,
+   "ms": 0.04478200000335164,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 4,
+   "method": "AS",
+   "nodes": 229,
+   "ms": 0.37522499999909087,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 4,
+   "method": "CUS1",
+   "nodes": 1941,
+   "ms": 2.0807479999973566,
+   "cost_ratio": 1.099337748344371,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 4,
+   "method": "CUS2",
+   "nodes": 18703,
+   "ms": 18.319451000024856,
+   "cost_ratio": 1.099337748344371,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 5,
+   "method": "DFS",
+   "nodes": 61,
+   "ms": 0.036684999997760315,
+   "cost_ratio": 1.91156462585034,
+   "moves_ratio": 2.2857142857142856
+  },
+  {
+   "n": 40,
+   "instance": 5,
+   "method": "BFS",
+   "nodes": 98,
+   "ms": 0.025898999979290238,
+   "cost_ratio": 1.4625850340136055,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 5,
+   "method": "GBFS",
+   "nodes": 30,
+   "ms": 0.03144699999779732,
+   "cost_ratio": 1.0612244897959184,
+   "moves_ratio": 1.1428571428571428
+  },
+  {
+   "n": 40,
+   "instance": 5,
+   "method": "AS",
+   "nodes": 114,
+   "ms": 0.14828800001964737,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.1428571428571428
+  },
+  {
+   "n": 40,
+   "instance": 5,
+   "method": "CUS1",
+   "nodes": 1914,
+   "ms": 1.6111879999982648,
+   "cost_ratio": 1.4625850340136055,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 5,
+   "method": "CUS2",
+   "nodes": 7153,
+   "ms": 7.125374999986889,
+   "cost_ratio": 1.4625850340136055,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 6,
+   "method": "DFS",
+   "nodes": 37,
+   "ms": 0.017806000016662438,
+   "cost_ratio": 1.309090909090909,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 40,
+   "instance": 6,
+   "method": "BFS",
+   "nodes": 80,
+   "ms": 0.022196000003305016,
+   "cost_ratio": 1.2,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 6,
+   "method": "GBFS",
+   "nodes": 32,
+   "ms": 0.03350800000134768,
+   "cost_ratio": 1.0606060606060606,
+   "moves_ratio": 1.3333333333333333
+  },
+  {
+   "n": 40,
+   "instance": 6,
+   "method": "AS",
+   "nodes": 421,
+   "ms": 0.48287100000266037,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.1666666666666667
+  },
+  {
+   "n": 40,
+   "instance": 6,
+   "method": "CUS1",
+   "nodes": 422,
+   "ms": 0.350620999995499,
+   "cost_ratio": 1.2,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 6,
+   "method": "CUS2",
+   "nodes": 4310,
+   "ms": 4.252360000009503,
+   "cost_ratio": 1.2,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 7,
+   "method": "DFS",
+   "nodes": 38,
+   "ms": 0.020621999993863938,
+   "cost_ratio": 1.6709677419354838,
+   "moves_ratio": 1.375
+  },
+  {
+   "n": 40,
+   "instance": 7,
+   "method": "BFS",
+   "nodes": 43,
+   "ms": 0.012171999998145111,
+   "cost_ratio": 1.0258064516129033,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 7,
+   "method": "GBFS",
+   "nodes": 28,
+   "ms": 0.02933800001869713,
+   "cost_ratio": 1.096774193548387,
+   "moves_ratio": 1.125
+  },
+  {
+   "n": 40,
+   "instance": 7,
+   "method": "AS",
+   "nodes": 418,
+   "ms": 0.4903310000088368,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.125
+  },
+  {
+   "n": 40,
+   "instance": 7,
+   "method": "CUS1",
+   "nodes": 1060,
+   "ms": 0.8690700000215656,
+   "cost_ratio": 1.0258064516129033,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 7,
+   "method": "CUS2",
+   "nodes": 5478,
+   "ms": 5.255240000025196,
+   "cost_ratio": 1.0258064516129033,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 8,
+   "method": "DFS",
+   "nodes": 457,
+   "ms": 0.24646800000027724,
+   "cost_ratio": 2.5604395604395602,
+   "moves_ratio": 2.75
+  },
+  {
+   "n": 40,
+   "instance": 8,
+   "method": "BFS",
+   "nodes": 56,
+   "ms": 0.01644699997882526,
+   "cost_ratio": 1.043956043956044,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 8,
+   "method": "GBFS",
+   "nodes": 15,
+   "ms": 0.015283000010413161,
+   "cost_ratio": 1.043956043956044,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 8,
+   "method": "AS",
+   "nodes": 44,
+   "ms": 0.07404499999097425,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 8,
+   "method": "CUS1",
+   "nodes": 192,
+   "ms": 0.15647099999682723,
+   "cost_ratio": 1.043956043956044,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 8,
+   "method": "CUS2",
+   "nodes": 306,
+   "ms": 0.3280779999954575,
+   "cost_ratio": 1.043956043956044,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 9,
+   "method": "DFS",
+   "nodes": 33,
+   "ms": 0.017020000001366498,
+   "cost_ratio": 1.2291666666666667,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 40,
+   "instance": 9,
+   "method": "BFS",
+   "nodes": 62,
+   "ms": 0.01760800000738527,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 9,
+   "method": "GBFS",
+   "nodes": 171,
+   "ms": 0.1591649999852507,
+   "cost_ratio": 1.2361111111111112,
+   "moves_ratio": 1.1666666666666667
+  },
+  {
+   "n": 40,
+   "instance": 9,
+   "method": "AS",
+   "nodes": 292,
+   "ms": 0.2966319999870848,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 9,
+   "method": "CUS1",
+   "nodes": 455,
+   "ms": 0.3527949999977409,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 9,
+   "method": "CUS2",
+   "nodes": 6270,
+   "ms": 5.8526500000084525,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 10,
+   "method": "DFS",
+   "nodes": 506,
+   "ms": 0.29517799998757255,
+   "cost_ratio": 1.8314606741573034,
+   "moves_ratio": 1.75
+  },
+  {
+   "n": 40,
+   "instance": 10,
+   "method": "BFS",
+   "nodes": 46,
+   "ms": 0.013766000023451852,
+   "cost_ratio": 1.404494382022472,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 10,
+   "method": "GBFS",
+   "nodes": 16,
+   "ms": 0.01777099998889753,
+   "cost_ratio": 1.404494382022472,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 10,
+   "method": "AS",
+   "nodes": 81,
+   "ms": 0.10956799999917166,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.25
+  },
+  {
+   "n": 40,
+   "instance": 10,
+   "method": "CUS1",
+   "nodes": 100,
+   "ms": 0.08266900002240618,
+   "cost_ratio": 1.404494382022472,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 10,
+   "method": "CUS2",
+   "nodes": 832,
+   "ms": 0.8483080000019072,
+   "cost_ratio": 1.404494382022472,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 11,
+   "method": "DFS",
+   "nodes": 334,
+   "ms": 0.21394899999904737,
+   "cost_ratio": 1.7114427860696517,
+   "moves_ratio": 2.0
+  },
+  {
+   "n": 40,
+   "instance": 11,
+   "method": "BFS",
+   "nodes": 120,
+   "ms": 0.03168800000707961,
+   "cost_ratio": 1.0049751243781095,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 11,
+   "method": "GBFS",
+   "nodes": 483,
+   "ms": 0.4381850000072518,
+   "cost_ratio": 1.0248756218905473,
+   "moves_ratio": 1.125
+  },
+  {
+   "n": 40,
+   "instance": 11,
+   "method": "AS",
+   "nodes": 1932,
+   "ms": 1.9690169999933005,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 11,
+   "method": "CUS1",
+   "nodes": 2368,
+   "ms": 2.0325649999790585,
+   "cost_ratio": 1.0049751243781095,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 40,
+   "instance": 11,
+   "method": "CUS2",
+   "nodes": 28682,
+   "ms": 26.837461000013718,
+   "cost_ratio": 1.0049751243781095,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 0,
+   "method": "DFS",
+   "nodes": 18,
+   "ms": 0.010228999997252686,
+   "cost_ratio": 1.3846153846153846,
+   "moves_ratio": 1.25
+  },
+  {
+   "n": 50,
+   "instance": 0,
+   "method": "BFS",
+   "nodes": 41,
+   "ms": 0.019174999977167317,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 0,
+   "method": "GBFS",
+   "nodes": 15,
+   "ms": 0.01926100000559927,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 0,
+   "method": "AS",
+   "nodes": 21,
+   "ms": 0.08555099998375226,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 0,
+   "method": "CUS1",
+   "nodes": 83,
+   "ms": 0.07641499999522239,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 0,
+   "method": "CUS2",
+   "nodes": 486,
+   "ms": 0.5541620000144576,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 1,
+   "method": "DFS",
+   "nodes": 351,
+   "ms": 0.24460999998154875,
+   "cost_ratio": 3.3703703703703702,
+   "moves_ratio": 3.0
+  },
+  {
+   "n": 50,
+   "instance": 1,
+   "method": "BFS",
+   "nodes": 42,
+   "ms": 0.01335799998969378,
+   "cost_ratio": 1.0740740740740742,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 1,
+   "method": "GBFS",
+   "nodes": 19,
+   "ms": 0.026324000003796755,
+   "cost_ratio": 1.0740740740740742,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 1,
+   "method": "AS",
+   "nodes": 90,
+   "ms": 0.1328589999900487,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 1,
+   "method": "CUS1",
+   "nodes": 252,
+   "ms": 0.2258779999806393,
+   "cost_ratio": 1.0740740740740742,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 1,
+   "method": "CUS2",
+   "nodes": 718,
+   "ms": 0.8156499999927291,
+   "cost_ratio": 1.0740740740740742,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 2,
+   "method": "DFS",
+   "nodes": 49,
+   "ms": 0.032683999990013035,
+   "cost_ratio": 1.2769230769230768,
+   "moves_ratio": 1.625
+  },
+  {
+   "n": 50,
+   "instance": 2,
+   "method": "BFS",
+   "nodes": 145,
+   "ms": 0.041710999994393205,
+   "cost_ratio": 1.0846153846153845,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 2,
+   "method": "GBFS",
+   "nodes": 49,
+   "ms": 0.05888600000503175,
+   "cost_ratio": 1.376923076923077,
+   "moves_ratio": 1.375
+  },
+  {
+   "n": 50,
+   "instance": 2,
+   "method": "AS",
+   "nodes": 326,
+   "ms": 0.4111369999861836,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.125
+  },
+  {
+   "n": 50,
+   "instance": 2,
+   "method": "CUS1",
+   "nodes": 2885,
+   "ms": 2.52556899999945,
+   "cost_ratio": 1.0846153846153845,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 2,
+   "method": "CUS2",
+   "nodes": 29511,
+   "ms": 29.401138999986642,
+   "cost_ratio": 1.0846153846153845,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 3,
+   "method": "DFS",
+   "nodes": 88,
+   "ms": 0.054192000021657805,
+   "cost_ratio": 1.3466666666666667,
+   "moves_ratio": 1.375
+  },
+  {
+   "n": 50,
+   "instance": 3,
+   "method": "BFS",
+   "nodes": 111,
+   "ms": 0.031305000021575324,
+   "cost_ratio": 1.0133333333333334,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 3,
+   "method": "GBFS",
+   "nodes": 81,
+   "ms": 0.07558900000503854,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 3,
+   "method": "AS",
+   "nodes": 257,
+   "ms": 0.3808349999872007,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 3,
+   "method": "CUS1",
+   "nodes": 2622,
+   "ms": 2.1629739999866615,
+   "cost_ratio": 1.0133333333333334,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 3,
+   "method": "CUS2",
+   "nodes": 24183,
+   "ms": 24.195600000012973,
+   "cost_ratio": 1.0133333333333334,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 4,
+   "method": "DFS",
+   "nodes": 1371,
+   "ms": 0.9861259999865979,
+   "cost_ratio": 1.3986013986013985,
+   "moves_ratio": 1.625
+  },
+  {
+   "n": 50,
+   "instance": 4,
+   "method": "BFS",
+   "nodes": 115,
+   "ms": 0.03002200000423727,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 4,
+   "method": "GBFS",
+   "nodes": 27,
+   "ms": 0.02645500001108303,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 4,
+   "method": "AS",
+   "nodes": 404,
+   "ms": 0.43338000000403554,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 4,
+   "method": "CUS1",
+   "nodes": 2608,
+   "ms": 2.0099420000008195,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 4,
+   "method": "CUS2",
+   "nodes": 9011,
+   "ms": 9.835849000012331,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 5,
+   "method": "DFS",
+   "nodes": 1494,
+   "ms": 1.1213269999927888,
+   "cost_ratio": 2.6203703703703702,
+   "moves_ratio": 2.3333333333333335
+  },
+  {
+   "n": 50,
+   "instance": 5,
+   "method": "BFS",
+   "nodes": 105,
+   "ms": 0.04757799999310919,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 5,
+   "method": "GBFS",
+   "nodes": 23,
+   "ms": 0.023448000007419978,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 5,
+   "method": "AS",
+   "nodes": 59,
+   "ms": 0.09926600000653707,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 5,
+   "method": "CUS1",
+   "nodes": 619,
+   "ms": 0.529540000002271,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 5,
+   "method": "CUS2",
+   "nodes": 4101,
+   "ms": 4.124937000000273,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 6,
+   "method": "DFS",
+   "nodes": 60,
+   "ms": 0.03721699999914563,
+   "cost_ratio": 2.142857142857143,
+   "moves_ratio": 2.5
+  },
+  {
+   "n": 50,
+   "instance": 6,
+   "method": "BFS",
+   "nodes": 70,
+   "ms": 0.0380130000223744,
+   "cost_ratio": 1.0357142857142858,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 6,
+   "method": "GBFS",
+   "nodes": 25,
+   "ms": 0.027750000015203113,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 6,
+   "method": "AS",
+   "nodes": 293,
+   "ms": 0.32748999998943873,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 6,
+   "method": "CUS1",
+   "nodes": 576,
+   "ms": 0.5114209999987906,
+   "cost_ratio": 1.0357142857142858,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 6,
+   "method": "CUS2",
+   "nodes": 1354,
+   "ms": 1.4065459999983432,
+   "cost_ratio": 1.0357142857142858,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 7,
+   "method": "DFS",
+   "nodes": 77,
+   "ms": 0.06690899999739486,
+   "cost_ratio": 4.423076923076923,
+   "moves_ratio": 4.166666666666667
+  },
+  {
+   "n": 50,
+   "instance": 7,
+   "method": "BFS",
+   "nodes": 114,
+   "ms": 0.03387200001725432,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 7,
+   "method": "GBFS",
+   "nodes": 24,
+   "ms": 0.025915999998460393,
+   "cost_ratio": 1.2596153846153846,
+   "moves_ratio": 1.1666666666666667
+  },
+  {
+   "n": 50,
+   "instance": 7,
+   "method": "AS",
+   "nodes": 69,
+   "ms": 0.11112400000001799,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 7,
+   "method": "CUS1",
+   "nodes": 699,
+   "ms": 0.6265860000098655,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 7,
+   "method": "CUS2",
+   "nodes": 2721,
+   "ms": 2.8678070000012212,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 8,
+   "method": "DFS",
+   "nodes": 210,
+   "ms": 0.1172479999809184,
+   "cost_ratio": 1.15695067264574,
+   "moves_ratio": 1.2307692307692308
+  },
+  {
+   "n": 50,
+   "instance": 8,
+   "method": "BFS",
+   "nodes": 96,
+   "ms": 0.03843299998607108,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 8,
+   "method": "GBFS",
+   "nodes": 68,
+   "ms": 0.07288599999810685,
+   "cost_ratio": 1.053811659192825,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 8,
+   "method": "AS",
+   "nodes": 1043,
+   "ms": 1.3244399999905454,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 8,
+   "method": "CUS1",
+   "nodes": 4547,
+   "ms": 3.8358060000120986,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 8,
+   "method": "CUS2",
+   "nodes": 29587,
+   "ms": 30.2633389999869,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 9,
+   "method": "DFS",
+   "nodes": 30121,
+   "ms": 29.424426999980824,
+   "cost_ratio": 1.9217391304347826,
+   "moves_ratio": 1.7333333333333334
+  },
+  {
+   "n": 50,
+   "instance": 9,
+   "method": "BFS",
+   "nodes": 165,
+   "ms": 0.06577799999263334,
+   "cost_ratio": 1.017391304347826,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 9,
+   "method": "GBFS",
+   "nodes": 145,
+   "ms": 0.20951399997670705,
+   "cost_ratio": 1.1043478260869566,
+   "moves_ratio": 1.1333333333333333
+  },
+  {
+   "n": 50,
+   "instance": 9,
+   "method": "AS",
+   "nodes": 11101,
+   "ms": 14.469534999989264,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 9,
+   "method": "CUS1",
+   "nodes": 220160,
+   "ms": 227.60706799999753,
+   "cost_ratio": 1.017391304347826,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 9,
+   "method": "CUS2",
+   "nodes": 2738967,
+   "ms": 3137.664497000003,
+   "cost_ratio": 1.017391304347826,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 10,
+   "method": "DFS",
+   "nodes": 99,
+   "ms": 0.0836270000093009,
+   "cost_ratio": 2.632258064516129,
+   "moves_ratio": 3.25
+  },
+  {
+   "n": 50,
+   "instance": 10,
+   "method": "BFS",
+   "nodes": 97,
+   "ms": 0.027271000021755754,
+   "cost_ratio": 1.0774193548387097,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 10,
+   "method": "GBFS",
+   "nodes": 29,
+   "ms": 0.03097000001162087,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 10,
+   "method": "AS",
+   "nodes": 172,
+   "ms": 0.22533999998586296,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 10,
+   "method": "CUS1",
+   "nodes": 1724,
+   "ms": 1.9707799999935105,
+   "cost_ratio": 1.0774193548387097,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 10,
+   "method": "CUS2",
+   "nodes": 8097,
+   "ms": 8.513074999996206,
+   "cost_ratio": 1.0774193548387097,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 11,
+   "method": "DFS",
+   "nodes": 33023,
+   "ms": 29.524413000018512,
+   "cost_ratio": 1.4415584415584415,
+   "moves_ratio": 1.2
+  },
+  {
+   "n": 50,
+   "instance": 11,
+   "method": "BFS",
+   "nodes": 138,
+   "ms": 0.041164000009530355,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 11,
+   "method": "GBFS",
+   "nodes": 517,
+   "ms": 0.5266389999860621,
+   "cost_ratio": 1.025974025974026,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 11,
+   "method": "AS",
+   "nodes": 5452,
+   "ms": 6.679005999984611,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 11,
+   "method": "CUS1",
+   "nodes": 7915,
+   "ms": 7.1504680000202825,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 50,
+   "instance": 11,
+   "method": "CUS2",
+   "nodes": 217126,
+   "ms": 227.1799490000035,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 0,
+   "method": "DFS",
+   "nodes": 82,
+   "ms": 0.059638999999833686,
+   "cost_ratio": 4.96,
+   "moves_ratio": 5.75
+  },
+  {
+   "n": 60,
+   "instance": 0,
+   "method": "BFS",
+   "nodes": 63,
+   "ms": 0.01775699999484459,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 0,
+   "method": "GBFS",
+   "nodes": 15,
+   "ms": 0.015340000004471221,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 0,
+   "method": "AS",
+   "nodes": 42,
+   "ms": 0.08840600000326049,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 0,
+   "method": "CUS1",
+   "nodes": 144,
+   "ms": 0.12612799997668844,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 0,
+   "method": "CUS2",
+   "nodes": 271,
+   "ms": 0.27263000001198634,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 1,
+   "method": "DFS",
+   "nodes": 33,
+   "ms": 0.015715000017735292,
+   "cost_ratio": 1.663265306122449,
+   "moves_ratio": 1.5
+  },
+  {
+   "n": 60,
+   "instance": 1,
+   "method": "BFS",
+   "nodes": 57,
+   "ms": 0.015066000003116642,
+   "cost_ratio": 1.1122448979591837,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 1,
+   "method": "GBFS",
+   "nodes": 22,
+   "ms": 0.02028700001233119,
+   "cost_ratio": 1.163265306122449,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 1,
+   "method": "AS",
+   "nodes": 62,
+   "ms": 0.09932099999332422,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 1,
+   "method": "CUS1",
+   "nodes": 264,
+   "ms": 0.20202499999300016,
+   "cost_ratio": 1.1122448979591837,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 1,
+   "method": "CUS2",
+   "nodes": 1638,
+   "ms": 1.575529999996661,
+   "cost_ratio": 1.1122448979591837,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 2,
+   "method": "DFS",
+   "nodes": 87,
+   "ms": 0.05402699997603122,
+   "cost_ratio": 1.5130434782608695,
+   "moves_ratio": 1.75
+  },
+  {
+   "n": 60,
+   "instance": 2,
+   "method": "BFS",
+   "nodes": 148,
+   "ms": 0.03841400001647344,
+   "cost_ratio": 1.0304347826086957,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 2,
+   "method": "GBFS",
+   "nodes": 18594,
+   "ms": 17.91176399999017,
+   "cost_ratio": 1.1869565217391305,
+   "moves_ratio": 1.25
+  },
+  {
+   "n": 60,
+   "instance": 2,
+   "method": "AS",
+   "nodes": 5621,
+   "ms": 7.262706000005892,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 2,
+   "method": "CUS1",
+   "nodes": 29159,
+   "ms": 27.459402000005184,
+   "cost_ratio": 1.0304347826086957,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 2,
+   "method": "CUS2",
+   "nodes": 274242,
+   "ms": 283.5023700000079,
+   "cost_ratio": 1.0304347826086957,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 3,
+   "method": "DFS",
+   "nodes": 352584,
+   "ms": 308.84255100002633,
+   "cost_ratio": 1.438095238095238,
+   "moves_ratio": 1.3333333333333333
+  },
+  {
+   "n": 60,
+   "instance": 3,
+   "method": "BFS",
+   "nodes": 98,
+   "ms": 0.024636999995664155,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 3,
+   "method": "GBFS",
+   "nodes": 110,
+   "ms": 0.0884430000098746,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 3,
+   "method": "AS",
+   "nodes": 158,
+   "ms": 0.18875300000331663,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 3,
+   "method": "CUS1",
+   "nodes": 499,
+   "ms": 0.3824789999953282,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 3,
+   "method": "CUS2",
+   "nodes": 1362,
+   "ms": 1.2043270000106077,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 4,
+   "method": "DFS",
+   "nodes": 344,
+   "ms": 0.19049100001211627,
+   "cost_ratio": 4.114285714285714,
+   "moves_ratio": 7.333333333333333
+  },
+  {
+   "n": 60,
+   "instance": 4,
+   "method": "BFS",
+   "nodes": 38,
+   "ms": 0.01000700001441146,
+   "cost_ratio": 1.2,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 4,
+   "method": "GBFS",
+   "nodes": 24,
+   "ms": 0.022913999998763757,
+   "cost_ratio": 1.1571428571428573,
+   "moves_ratio": 1.6666666666666667
+  },
+  {
+   "n": 60,
+   "instance": 4,
+   "method": "AS",
+   "nodes": 236,
+   "ms": 0.27270900000075926,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.3333333333333333
+  },
+  {
+   "n": 60,
+   "instance": 4,
+   "method": "CUS1",
+   "nodes": 50,
+   "ms": 0.03397599999743761,
+   "cost_ratio": 1.2,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 4,
+   "method": "CUS2",
+   "nodes": 147,
+   "ms": 0.1509380000186411,
+   "cost_ratio": 1.2,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 5,
+   "method": "DFS",
+   "nodes": 91,
+   "ms": 0.05396200000973295,
+   "cost_ratio": 4.078947368421052,
+   "moves_ratio": 3.5714285714285716
+  },
+  {
+   "n": 60,
+   "instance": 5,
+   "method": "BFS",
+   "nodes": 120,
+   "ms": 0.02636199999983546,
+   "cost_ratio": 1.0263157894736843,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 5,
+   "method": "GBFS",
+   "nodes": 33,
+   "ms": 0.02783599998679165,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 5,
+   "method": "AS",
+   "nodes": 363,
+   "ms": 0.3800210000122206,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 5,
+   "method": "CUS1",
+   "nodes": 1456,
+   "ms": 1.1613850000173898,
+   "cost_ratio": 1.0263157894736843,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 5,
+   "method": "CUS2",
+   "nodes": 9361,
+   "ms": 7.973859999992783,
+   "cost_ratio": 1.0263157894736843,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 6,
+   "method": "DFS",
+   "nodes": 155,
+   "ms": 0.09467499998550011,
+   "cost_ratio": 1.4190871369294606,
+   "moves_ratio": 1.4375
+  },
+  {
+   "n": 60,
+   "instance": 6,
+   "method": "BFS",
+   "nodes": 162,
+   "ms": 0.042054000005009584,
+   "cost_ratio": 1.112033195020747,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 6,
+   "method": "GBFS",
+   "nodes": 433,
+   "ms": 0.3491779999933442,
+   "cost_ratio": 1.033195020746888,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 6,
+   "method": "AS",
+   "nodes": 3931,
+   "ms": 4.518808000000263,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0625
+  },
+  {
+   "n": 60,
+   "instance": 6,
+   "method": "CUS1",
+   "nodes": 60616,
+   "ms": 62.0642739999937,
+   "cost_ratio": 1.112033195020747,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 6,
+   "method": "CUS2",
+   "nodes": 683621,
+   "ms": 732.6871340000025,
+   "cost_ratio": 1.112033195020747,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 7,
+   "method": "DFS",
+   "nodes": 208,
+   "ms": 0.1743930000088767,
+   "cost_ratio": 1.730886850152905,
+   "moves_ratio": 1.8
+  },
+  {
+   "n": 60,
+   "instance": 7,
+   "method": "BFS",
+   "nodes": 186,
+   "ms": 0.06627799999137096,
+   "cost_ratio": 1.003058103975535,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 7,
+   "method": "GBFS",
+   "nodes": 12502,
+   "ms": 16.509777999999642,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 7,
+   "method": "AS",
+   "nodes": 75254,
+   "ms": 146.99017599997433,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 7,
+   "method": "CUS1",
+   "nodes": 888158,
+   "ms": 957.8865680000206,
+   "cost_ratio": 1.003058103975535,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 7,
+   "method": "CUS2",
+   "nodes": 5748634,
+   "ms": 7061.317860999992,
+   "cost_ratio": 1.003058103975535,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 8,
+   "method": "DFS",
+   "nodes": 837,
+   "ms": 0.4073469999923418,
+   "cost_ratio": 1.4017857142857142,
+   "moves_ratio": 1.5333333333333334
+  },
+  {
+   "n": 60,
+   "instance": 8,
+   "method": "BFS",
+   "nodes": 138,
+   "ms": 0.03456100000676088,
+   "cost_ratio": 1.0625,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 8,
+   "method": "GBFS",
+   "nodes": 62,
+   "ms": 0.05704800000216892,
+   "cost_ratio": 1.0625,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 8,
+   "method": "AS",
+   "nodes": 21040,
+   "ms": 26.411899000009953,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0666666666666667
+  },
+  {
+   "n": 60,
+   "instance": 8,
+   "method": "CUS1",
+   "nodes": 95185,
+   "ms": 85.4431580000039,
+   "cost_ratio": 1.0625,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 8,
+   "method": "CUS2",
+   "nodes": 1829907,
+   "ms": 1930.0569110000083,
+   "cost_ratio": 1.0625,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 9,
+   "method": "DFS",
+   "nodes": 80,
+   "ms": 0.05712599994467382,
+   "cost_ratio": 1.1226053639846743,
+   "moves_ratio": 1.15
+  },
+  {
+   "n": 60,
+   "instance": 9,
+   "method": "BFS",
+   "nodes": 124,
+   "ms": 0.03462800003717348,
+   "cost_ratio": 1.0651340996168583,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 9,
+   "method": "GBFS",
+   "nodes": 106,
+   "ms": 0.11840199999824108,
+   "cost_ratio": 1.0996168582375478,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 9,
+   "method": "AS",
+   "nodes": 30904,
+   "ms": 53.07926000000407,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 9,
+   "method": "CUS1",
+   "nodes": 712980,
+   "ms": 760.988124999983,
+   "cost_ratio": 1.0651340996168583,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 9,
+   "method": "CUS2",
+   "nodes": 15267770,
+   "ms": 18569.547198000007,
+   "cost_ratio": 1.0651340996168583,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 10,
+   "method": "DFS",
+   "nodes": 59,
+   "ms": 0.03456899997900109,
+   "cost_ratio": 1.7214285714285715,
+   "moves_ratio": 1.6
+  },
+  {
+   "n": 60,
+   "instance": 10,
+   "method": "BFS",
+   "nodes": 73,
+   "ms": 0.01974299999574214,
+   "cost_ratio": 1.1571428571428573,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 10,
+   "method": "GBFS",
+   "nodes": 173,
+   "ms": 0.14888700002302357,
+   "cost_ratio": 1.1571428571428573,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 10,
+   "method": "AS",
+   "nodes": 365,
+   "ms": 0.4713829999900554,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 10,
+   "method": "CUS1",
+   "nodes": 3512,
+   "ms": 2.887703000055808,
+   "cost_ratio": 1.1571428571428573,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 10,
+   "method": "CUS2",
+   "nodes": 26742,
+   "ms": 25.393506999989768,
+   "cost_ratio": 1.1571428571428573,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 11,
+   "method": "DFS",
+   "nodes": 58,
+   "ms": 0.03599400002940456,
+   "cost_ratio": 3.3209876543209877,
+   "moves_ratio": 3.2
+  },
+  {
+   "n": 60,
+   "instance": 11,
+   "method": "BFS",
+   "nodes": 78,
+   "ms": 0.02207799997222537,
+   "cost_ratio": 1.0617283950617284,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 11,
+   "method": "GBFS",
+   "nodes": 134,
+   "ms": 0.10128600001735322,
+   "cost_ratio": 1.0617283950617284,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 11,
+   "method": "AS",
+   "nodes": 233,
+   "ms": 0.2762130000064644,
+   "cost_ratio": 1.0,
+   "moves_ratio": 1.2
+  },
+  {
+   "n": 60,
+   "instance": 11,
+   "method": "CUS1",
+   "nodes": 415,
+   "ms": 0.37637899998799185,
+   "cost_ratio": 1.0617283950617284,
+   "moves_ratio": 1.0
+  },
+  {
+   "n": 60,
+   "instance": 11,
+   "method": "CUS2",
+   "nodes": 3141,
+   "ms": 3.2148500000062086,
+   "cost_ratio": 1.0617283950617284,
+   "moves_ratio": 1.0
+  }
+ ],
+ "visit_all": [
+  {
+   "k": 2,
+   "state_nodes": 36,
+   "state_ms": 0.08779299997740964,
+   "legs_nodes": 91,
+   "legs_ms": 0.25589899996703025,
+   "optimal": 103,
+   "greedy": 103
+  },
+  {
+   "k": 2,
+   "state_nodes": 51,
+   "state_ms": 0.07602199997336356,
+   "legs_nodes": 275,
+   "legs_ms": 0.4439919999867925,
+   "optimal": 174,
+   "greedy": 174
+  },
+  {
+   "k": 2,
+   "state_nodes": 72,
+   "state_ms": 0.09124600001086947,
+   "legs_nodes": 3339,
+   "legs_ms": 3.617618000021139,
+   "optimal": 220,
+   "greedy": 220
+  },
+  {
+   "k": 2,
+   "state_nodes": 85,
+   "state_ms": 0.11694300002318414,
+   "legs_nodes": 1910,
+   "legs_ms": 2.1593219999545,
+   "optimal": 195,
+   "greedy": 195
+  },
+  {
+   "k": 2,
+   "state_nodes": 36,
+   "state_ms": 0.06311999999297768,
+   "legs_nodes": 47,
+   "legs_ms": 0.20286300002680946,
+   "optimal": 114,
+   "greedy": 114
+  },
+  {
+   "k": 2,
+   "state_nodes": 55,
+   "state_ms": 0.08129799999778697,
+   "legs_nodes": 126,
+   "legs_ms": 0.2628400000048714,
+   "optimal": 116,
+   "greedy": 116
+  },
+  {
+   "k": 2,
+   "state_nodes": 46,
+   "state_ms": 0.06861600002139312,
+   "legs_nodes": 136,
+   "legs_ms": 0.27270399999679285,
+   "optimal": 160,
+   "greedy": 160
+  },
+  {
+   "k": 2,
+   "state_nodes": 118,
+   "state_ms": 0.15798099997255122,
+   "legs_nodes": 557,
+   "legs_ms": 0.7874839999999494,
+   "optimal": 226,
+   "greedy": 226
+  },
+  {
+   "k": 2,
+   "state_nodes": 84,
+   "state_ms": 0.10984799996549555,
+   "legs_nodes": 358,
+   "legs_ms": 0.5351260000452385,
+   "optimal": 179,
+   "greedy": 179
+  },
+  {
+   "k": 2,
+   "state_nodes": 42,
+   "state_ms": 0.08474399999158777,
+   "legs_nodes": 223,
+   "legs_ms": 0.34649499997385647,
+   "optimal": 121,
+   "greedy": 121
+  },
+  {
+   "k": 3,
+   "state_nodes": 243,
+   "state_ms": 0.30069900003582006,
+   "legs_nodes": 944,
+   "legs_ms": 1.282609999975648,
+   "optimal": 198,
+   "greedy": 215
+  },
+  {
+   "k": 3,
+   "state_nodes": 106,
+   "state_ms": 0.15243500001815846,
+   "legs_nodes": 744,
+   "legs_ms": 1.0374469999874236,
+   "optimal": 258,
+   "greedy": 264
+  },
+  {
+   "k": 3,
+   "state_nodes": 48,
+   "state_ms": 0.07971300004783188,
+   "legs_nodes": 335,
+   "legs_ms": 0.6421239999667705,
+   "optimal": 132,
+   "greedy": 132
+  },
+  {
+   "k": 3,
+   "state_nodes": 145,
+   "state_ms": 0.17787199999474979,
+   "legs_nodes": 1335,
+   "legs_ms": 1.797781999982817,
+   "optimal": 227,
+   "greedy": 227
+  },
+  {
+   "k": 3,
+   "state_nodes": 85,
+   "state_ms": 0.1706399999648056,
+   "legs_nodes": 1197,
+   "legs_ms": 1.9169539999666085,
+   "optimal": 192,
+   "greedy": 192
+  },
+  {
+   "k": 3,
+   "state_nodes": 163,
+   "state_ms": 0.20637599999417944,
+   "legs_nodes": 304,
+   "legs_ms": 0.6628529999943567,
+   "optimal": 263,
+   "greedy": 263
+  },
+  {
+   "k": 3,
+   "state_nodes": 57,
+   "state_ms": 0.11815499999556778,
+   "legs_nodes": 1178,
+   "legs_ms": 1.9290950000367957,
+   "optimal": 173,
+   "greedy": 173
+  },
+  {
+   "k": 3,
+   "state_nodes": 44,
+   "state_ms": 0.1100360000236833,
+   "legs_nodes": 210,
+   "legs_ms": 0.6527799999958006,
+   "optimal": 97,
+   "greedy": 97
+  },
+  {
+   "k": 3,
+   "state_nodes": 283,
+   "state_ms": 0.4001030000040373,
+   "legs_nodes": 5139,
+   "legs_ms": 6.548533000000134,
+   "optimal": 330,
+   "greedy": 330
+  },
+  {
+   "k": 3,
+   "state_nodes": 111,
+   "state_ms": 0.21699400002717084,
+   "legs_nodes": 419,
+   "legs_ms": 0.9595460000468847,
+   "optimal": 214,
+   "greedy": 214
+  },
+  {
+   "k": 4,
+   "state_nodes": 264,
+   "state_ms": 0.3552860000013425,
+   "legs_nodes": 2428,
+   "legs_ms": 3.732336000041414,
+   "optimal": 346,
+   "greedy": 363
+  },
+  {
+   "k": 4,
+   "state_nodes": 281,
+   "state_ms": 0.5054810000046928,
+   "legs_nodes": 1115,
+   "legs_ms": 2.2267649999889727,
+   "optimal": 250,
+   "greedy": 265
+  },
+  {
+   "k": 4,
+   "state_nodes": 257,
+   "state_ms": 0.4444119999789109,
+   "legs_nodes": 1073,
+   "legs_ms": 2.0913120000045637,
+   "optimal": 257,
+   "greedy": 317
+  },
+  {
+   "k": 4,
+   "state_nodes": 527,
+   "state_ms": 0.8179680000353073,
+   "legs_nodes": 721,
+   "legs_ms": 1.451770999949531,
+   "optimal": 319,
+   "greedy": 321
+  },
+  {
+   "k": 4,
+   "state_nodes": 364,
+   "state_ms": 0.4627229999982774,
+   "legs_nodes": 24101,
+   "legs_ms": 27.121847000046273,
+   "optimal": 412,
+   "greedy": null
+  },
+  {
+   "k": 4,
+   "state_nodes": 228,
+   "state_ms": 0.2963549999890347,
+   "legs_nodes": 3127,
+   "legs_ms": 4.443072000015036,
+   "optimal": 312,
+   "greedy": 312
+  },
+  {
+   "k": 4,
+   "state_nodes": 111,
+   "state_ms": 0.1773909999656098,
+   "legs_nodes": 9112,
+   "legs_ms": 12.970382999981211,
+   "optimal": 295,
+   "greedy": 295
+  },
+  {
+   "k": 4,
+   "state_nodes": 262,
+   "state_ms": 0.34202000000504995,
+   "legs_nodes": 645,
+   "legs_ms": 1.2090159999615935,
+   "optimal": 240,
+   "greedy": 243
+  },
+  {
+   "k": 4,
+   "state_nodes": 190,
+   "state_ms": 0.24774799999249808,
+   "legs_nodes": 837,
+   "legs_ms": 1.3540769999735858,
+   "optimal": 197,
+   "greedy": 197
+  },
+  {
+   "k": 4,
+   "state_nodes": 186,
+   "state_ms": 0.23069900004202282,
+   "legs_nodes": 512,
+   "legs_ms": 1.0779300000081093,
+   "optimal": 225,
+   "greedy": 225
+  },
+  {
+   "k": 5,
+   "state_nodes": 497,
+   "state_ms": 0.6057090000126664,
+   "legs_nodes": 8503,
+   "legs_ms": 9.510708999982853,
+   "optimal": 340,
+   "greedy": null
+  },
+  {
+   "k": 5,
+   "state_nodes": 291,
+   "state_ms": 0.4036809999661273,
+   "legs_nodes": 4331,
+   "legs_ms": 5.304440000031718,
+   "optimal": 307,
+   "greedy": 307
+  },
+  {
+   "k": 5,
+   "state_nodes": 86,
+   "state_ms": 0.1271920000363025,
+   "legs_nodes": 2676,
+   "legs_ms": 3.4111460000190164,
+   "optimal": 243,
+   "greedy": 243
+  },
+  {
+   "k": 5,
+   "state_nodes": 257,
+   "state_ms": 0.3176370000232964,
+   "legs_nodes": 4179,
+   "legs_ms": 5.162535000010848,
+   "optimal": 257,
+   "greedy": 312
+  },
+  {
+   "k": 5,
+   "state_nodes": 173,
+   "state_ms": 0.26423000002750996,
+   "legs_nodes": 3522,
+   "legs_ms": 4.492174999995768,
+   "optimal": 229,
+   "greedy": 229
+  },
+  {
+   "k": 5,
+   "state_nodes": 243,
+   "state_ms": 0.3695070000162559,
+   "legs_nodes": 908,
+   "legs_ms": 1.8588969999768779,
+   "optimal": 218,
+   "greedy": 219
+  },
+  {
+   "k": 5,
+   "state_nodes": 384,
+   "state_ms": 0.5452070000160347,
+   "legs_nodes": 2112,
+   "legs_ms": 3.1099359999871012,
+   "optimal": 325,
+   "greedy": 325
+  },
+  {
+   "k": 5,
+   "state_nodes": 643,
+   "state_ms": 0.8478800000375486,
+   "legs_nodes": 10893,
+   "legs_ms": 12.524524000014026,
+   "optimal": 370,
+   "greedy": 482
+  },
+  {
+   "k": 5,
+   "state_nodes": 543,
+   "state_ms": 0.7731289999810542,
+   "legs_nodes": 906,
+   "legs_ms": 1.8352920000097583,
+   "optimal": 305,
+   "greedy": 305
+  },
+  {
+   "k": 5,
+   "state_nodes": 259,
+   "state_ms": 0.3141450000043733,
+   "legs_nodes": 1921,
+   "legs_ms": 2.701416000036261,
+   "optimal": 246,
+   "greedy": 246
+  },
+  {
+   "k": 6,
+   "state_nodes": 1093,
+   "state_ms": 1.4586109999754626,
+   "legs_nodes": 2790,
+   "legs_ms": 4.006376999996064,
+   "optimal": 439,
+   "greedy": 455
+  },
+  {
+   "k": 6,
+   "state_nodes": 258,
+   "state_ms": 0.37105800004155753,
+   "legs_nodes": 12330,
+   "legs_ms": 13.211361999992732,
+   "optimal": 341,
+   "greedy": 341
+  },
+  {
+   "k": 6,
+   "state_nodes": 234,
+   "state_ms": 0.39268900002298324,
+   "legs_nodes": 7744,
+   "legs_ms": 9.480371999984527,
+   "optimal": 286,
+   "greedy": 286
+  },
+  {
+   "k": 6,
+   "state_nodes": 171,
+   "state_ms": 0.42673300004025805,
+   "legs_nodes": 1251,
+   "legs_ms": 3.9577189999704387,
+   "optimal": 215,
+   "greedy": 215
+  },
+  {
+   "k": 6,
+   "state_nodes": 873,
+   "state_ms": 1.7887389999486913,
+   "legs_nodes": 10229,
+   "legs_ms": 16.08183899998039,
+   "optimal": 388,
+   "greedy": 394
+  },
+  {
+   "k": 6,
+   "state_nodes": 164,
+   "state_ms": 0.4338219999908688,
+   "legs_nodes": 1442,
+   "legs_ms": 4.112393000013981,
+   "optimal": 239,
+   "greedy": 239
+  },
+  {
+   "k": 6,
+   "state_nodes": 622,
+   "state_ms": 1.3510409999639705,
+   "legs_nodes": 4441,
+   "legs_ms": 6.1229590000380085,
+   "optimal": 327,
+   "greedy": 327
+  },
+  {
+   "k": 6,
+   "state_nodes": 1175,
+   "state_ms": 1.5548330000001442,
+   "legs_nodes": 2945,
+   "legs_ms": 4.05848100001549,
+   "optimal": 313,
+   "greedy": 318
+  },
+  {
+   "k": 6,
+   "state_nodes": 298,
+   "state_ms": 0.4581840000241755,
+   "legs_nodes": 4172,
+   "legs_ms": 5.692327000019759,
+   "optimal": 278,
+   "greedy": 330
+  },
+  {
+   "k": 6,
+   "state_nodes": 64,
+   "state_ms": 0.1382489999741665,
+   "legs_nodes": 1809,
+   "legs_ms": 3.0530070000054366,
+   "optimal": 166,
+   "greedy": 166
+  }
+ ]
+}
