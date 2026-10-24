@@ -15,7 +15,9 @@ search <filename> <method>          (via search.bat)
 ```
 
 Methods: `DFS`, `BFS`, `GBFS`, `AS`, `CUS1`, `CUS2`, plus the research extension `ALL`
-(cheapest route that visits every destination; the path may repeat locations)
+(cheapest route that visits every destination; the path may repeat locations) and a
+visit-all version of each required method: `DFS-ALL`, `BFS-ALL`, `GBFS-ALL`, `AS-ALL`,
+`CUS1-ALL`, `CUS2-ALL`. All of them can be picked in the GUI.
 
 Output:
 
@@ -56,6 +58,7 @@ python -m unittest discover tests
 | `route_finding/trace.py` | Records real node expansions for the GUI replay | done |
 | `gui.py` | Tkinter viewer that animates any method on a problem file | done, checked on cases 01 and 13 |
 | `route_finding/algorithms/visit_all.py` | Research: cheapest route visiting ALL destinations (`python search.py <file> ALL`) | done |
+| `route_finding/algorithms/visit_all_methods.py` | Research: `DFS-ALL` ... `CUS2-ALL`, each required method run unchanged on a (location, visited set) problem | done, tests in `tests/test_visit_all_methods.py` |
 | `research_visit_all.py` | Research experiments; writes `results/visit_all.md` | done |
 | `tests/visit_all_cases/` | Test maps for the research extension | done |
 | `run_tests.py` | Batch runner / results table | done |

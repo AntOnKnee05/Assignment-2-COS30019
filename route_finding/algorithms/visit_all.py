@@ -41,7 +41,7 @@ again whenever a cheaper route to it is found.
 from math import inf
 
 from ..frontier import PriorityFrontier
-from ..node import Node, SearchResult
+from ..node import Node, SearchResult, expand
 from .astar import heuristic_scale
 
 HEURISTICS = ("mst", "farthest", "none")
@@ -105,9 +105,9 @@ def visit_all(problem, heuristic="mst"):
         if node.path_cost > best_cost[(node.state, visited)]:
             continue
 
-        for state, cost in problem.successors(node.state):   # ascending (NOTE 2)
-            child = Node(state, node, node.path_cost + cost)
+        for child in expand(problem, node):   # ascending (NOTE 2)
             nodes_created += 1
+            state = child.state
             child_visited = visited | bit.get(state, 0)
             key = (state, child_visited)
             # Keep a repeat only if it reaches this state more cheaply.

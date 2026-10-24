@@ -3,9 +3,11 @@
 Usage:
     python search.py <filename> <method>
 
-Methods: DFS, BFS, GBFS, AS, CUS1, CUS2, and the research extension ALL
-(cheapest route that visits every destination; the goal printed is the last
-destination reached and the path may repeat locations).
+Methods: DFS, BFS, GBFS, AS, CUS1, CUS2, and the research extension:
+ALL (cheapest route that visits every destination) and DFS-ALL, BFS-ALL,
+GBFS-ALL, AS-ALL, CUS1-ALL, CUS2-ALL (each required method searching for a
+route that visits every destination). For these the goal printed is the
+last destination reached and the path may repeat locations.
 
 Output when a goal is reached:
     filename method

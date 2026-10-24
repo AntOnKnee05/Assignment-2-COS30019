@@ -7,6 +7,7 @@ from .cus2 import cus2
 from .dfs import dfs
 from .gbfs import gbfs
 from .visit_all import visit_all
+from .visit_all_methods import make_visit_all
 
 METHODS = {
     "DFS": dfs,
@@ -19,7 +20,9 @@ METHODS = {
 
 # Research extension, kept separate so the six required methods (and the
 # tests and report figures built on them) are unaffected. search.py accepts
-# both: python search.py <filename> ALL
+# both: python search.py <filename> ALL   or   ... <filename> BFS-ALL
 RESEARCH_METHODS = {
     "ALL": visit_all,   # cheapest route visiting every destination
+    # Each required method, run on the visit-all problem.
+    **{f"{name}-ALL": make_visit_all(method) for name, method in METHODS.items()},
 }

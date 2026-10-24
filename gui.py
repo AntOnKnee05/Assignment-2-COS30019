@@ -7,9 +7,11 @@ Draws the graph (nodes at their coordinates, directed weighted edges), marks
 the origin and destinations, then replays the search one expansion at a time
 and finally highlights the path found. Standard library only (tkinter).
 
-The viewer works with any method in METHODS without changing the algorithms:
-route_finding.trace records each call to expand(), so every logged step is
-one real node expansion in the order the algorithm made it.
+The viewer works with any method in METHODS or RESEARCH_METHODS without
+changing the algorithms: route_finding.trace records each call to expand(),
+so every logged step is one real node expansion in the order the algorithm
+made it. For the visit-all methods (ALL, DFS-ALL, ...) the log also shows
+which destinations had been visited at each expanded node.
 """
 
 import glob
@@ -20,10 +22,17 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 
 from route_finding import ParseError, parse_problem
-from route_finding.algorithms import METHODS
-from route_finding.trace import trace_search
+from route_finding.algorithms import METHODS, RESEARCH_METHODS
+from route_finding.trace import TraceLimitExceeded, trace_search
 
-CASES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests", "cases")
+ALL_METHODS = {**METHODS, **RESEARCH_METHODS}
+
+TESTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests")
+CASES_DIR = os.path.join(TESTS_DIR, "cases")
+CASE_DIRS = [CASES_DIR, os.path.join(TESTS_DIR, "visit_all_cases")]
+
+# Larger searches are too slow to record and replay; run them with search.py.
+MAX_TRACE_STEPS = 100_000
 
 NODE_RADIUS = 15
 MARGIN = 50
@@ -46,12 +55,26 @@ COLOURS = {
 }
 
 
+def location(state):
+    """The graph node of a logged state (visit-all methods log (location, visited))."""
+    return getattr(state, "location", state)
+
+
+def state_label(state):
+    """Log text for a state: '3', or '3{4,5}' when it carries a visited set."""
+    visited = getattr(state, "visited", None)
+    if visited is None:
+        return str(state)
+    return f"{state.location}{{{','.join(map(str, sorted(visited)))}}}"
+
+
 
 
 class SearchViewer:
     def __init__(self, root, filename=None, method="BFS"):
         self.root = root
         self.root.title("Route Finding - Search Visualiser")
+        self.case_paths = {}
         self.root.geometry("1150x720")
         self.root.minsize(800, 500)
 
@@ -65,9 +88,10 @@ class SearchViewer:
 
         self._build_widgets()
 
-        cases = sorted(glob.glob(os.path.join(CASES_DIR, "*.txt")))
-        self.file_box["values"] = [os.path.basename(p) for p in cases]
-        self.method_var.set(method.upper() if method.upper() in METHODS else "BFS")
+        cases = [p for d in CASE_DIRS for p in sorted(glob.glob(os.path.join(d, "*.txt")))]
+        self.case_paths = {os.path.basename(p): p for p in cases}
+        self.file_box["values"] = list(self.case_paths)
+        self.method_var.set(method.upper() if method.upper() in ALL_METHODS else "BFS")
         if filename:
             self.load_file(filename)
         elif cases:
@@ -90,14 +114,16 @@ class SearchViewer:
         self.file_box = ttk.Combobox(file_row, textvariable=self.file_var, state="readonly")
         self.file_box.pack(side=tk.LEFT, fill=tk.X, expand=True)
         self.file_box.bind("<<ComboboxSelected>>",
-                           lambda _e: self.load_file(os.path.join(CASES_DIR, self.file_var.get())))
+                           lambda _e: self.load_file(self.case_paths[self.file_var.get()]))
         ttk.Button(file_row, text="Browse...", command=self.browse).pack(side=tk.LEFT, padx=(4, 0))
 
         ttk.Label(panel, text="Search method").pack(anchor=tk.W)
         self.method_var = tk.StringVar()
         method_box = ttk.Combobox(panel, textvariable=self.method_var,
-                                  values=list(METHODS), state="readonly")
-        method_box.pack(fill=tk.X, pady=(0, 8))
+                                  values=list(ALL_METHODS), state="readonly", height=len(ALL_METHODS))
+        method_box.pack(fill=tk.X, pady=(0, 2))
+        ttk.Label(panel, text="-ALL methods must visit every destination",
+                  foreground=COLOURS["axis"]).pack(anchor=tk.W, pady=(0, 8))
         method_box.bind("<<ComboboxSelected>>", lambda _e: self.run_search())
 
         buttons = ttk.Frame(panel)
@@ -183,7 +209,15 @@ class SearchViewer:
             return
         method = self.method_var.get()
         try:
-            self.result, self.steps = trace_search(self.problem, METHODS[method])
+            self.result, self.steps = trace_search(self.problem, ALL_METHODS[method],
+                                                   max_steps=MAX_TRACE_STEPS)
+        except TraceLimitExceeded:
+            self.result, self.steps, self.step_index = None, [], 0
+            self.status_var.set(f"{method}: needs more than {MAX_TRACE_STEPS:,} expansions on "
+                                f"this map, too many to animate.\nRun it with "
+                                f"search.py instead.")
+            self.redraw()
+            return
         except NotImplementedError as e:
             self.step_index = 0
             self.status_var.set(f"{method}: {e}")
@@ -196,8 +230,8 @@ class SearchViewer:
             return
 
         for i, (state, children) in enumerate(self.steps, 1):
-            kids = ", ".join(map(str, children)) or "(none)"
-            self.log.insert(tk.END, f"{i:>3}. expand {state} -> {kids}")
+            kids = ", ".join(map(state_label, children)) or "(none)"
+            self.log.insert(tk.END, f"{i:>3}. expand {state_label(state)} -> {kids}")
         self.step_index = 0
         self.update_view()
 
@@ -274,13 +308,24 @@ class SearchViewer:
             if self.step_index == 0:
                 return f"{method}: ready - {total} expansions. Press Play or Step."
             state, _ = self.steps[self.step_index - 1]
-            return f"{method}: step {self.step_index}/{total} - expanding node {state}"
+            text = f"{method}: step {self.step_index}/{total} - expanding node {location(state)}"
+            if hasattr(state, "visited"):
+                text += f"\nVisited so far: {{{', '.join(map(str, sorted(state.visited)))}}}"
+            return text
         goal = self.result.goal
+        visit_all = method in RESEARCH_METHODS
         if goal is None:
-            return (f"{method}: no goal is reachable\n"
+            reason = "not every destination is reachable" if visit_all else "no goal is reachable"
+            return (f"{method}: {reason}\n"
                     f"Nodes created: {self.result.nodes_created}")
         path = goal.path()
-        return (f"{method}: reached goal {goal.state}\n"
+        if visit_all:
+            order = list(dict.fromkeys(s for s in path if s in self.problem.destinations))
+            headline = (f"{method}: visited all {len(order)} destinations\n"
+                        f"Order: {' -> '.join(map(str, order))}")
+        else:
+            headline = f"{method}: reached goal {goal.state}"
+        return (f"{headline}\n"
                 f"Nodes created: {self.result.nodes_created}\n"
                 f"Path: {' -> '.join(map(str, path))}\n"
                 f"Cost: {goal.path_cost:g}   Moves: {len(path) - 1}")
@@ -290,9 +335,9 @@ class SearchViewer:
         expanded, generated = set(), set()
         current = None
         for state, children in self.steps[:self.step_index]:
-            expanded.add(state)
-            generated.update(children)
-            current = state
+            expanded.add(location(state))
+            generated.update(map(location, children))
+            current = location(state)
         path_edges = set()
         if self.result is not None and self.at_end():
             current = None
