@@ -7,11 +7,11 @@ using six search methods implemented from scratch (no search libraries).
 
 ## Usage
 
-Python 3, standard library only. Works from `cmd` on Windows 10/11:
+Python 3 is required. The CLI, tests and GUI use the standard library; the GUI also needs Tkinter (included with the standard Windows Python installer). Optional chart scripts use Matplotlib. Run commands from the project folder containing `search.py`, using Command Prompt or PowerShell:
 
 ```
 python search.py <filename> <method>
-search <filename> <method>          (via search.bat)
+.\search.bat <filename> <method>    (Windows batch launcher)
 ```
 
 Methods: `DFS`, `BFS`, `GBFS`, `AS`, `CUS1`, `CUS2`, plus the research extension `ALL`
@@ -27,7 +27,7 @@ goal number_of_nodes
 path
 ```
 
-Run every method on every test case (add `--csv results.csv` to save data for the report):
+Run the six required methods on the 15 standard cases (90 runs). Research methods are separate and are not included by `run_tests.py`. Add `--csv results.csv` to save the table:
 
 ```
 python run_tests.py
@@ -38,6 +38,113 @@ Unit tests:
 ```
 python -m unittest discover tests
 ```
+
+## Required methods
+
+| Code | Algorithm | Objective |
+|---|---|---|
+| `DFS` | Depth-first search | Find a route; no optimality guarantee |
+| `BFS` | Breadth-first search | Fewest moves |
+| `GBFS` | Greedy best-first search | Find a route using distance estimates; no optimality guarantee |
+| `AS` | A* | Lowest travel cost with the scaled heuristic |
+| `CUS1` | Iterative deepening DFS (IDDFS) | Fewest moves |
+| `CUS2` | Iterative deepening A* (IDA*) | Fewest moves |
+
+The required methods stop at **any one** destination. A move is one directed
+edge; travel cost is the sum of the edge costs. Node labels are locations,
+not costs. `number_of_nodes` counts created search records, including the
+root and rejected children; iterative deepening includes every iteration.
+
+For example:
+
+```text
+python search.py tests/cases/test01_spec_example.txt AS
+```
+
+Expected output:
+
+```text
+tests/cases/test01_spec_example.txt AS
+5 9
+2 3 5
+```
+
+Here the destination is 5, nine search records were created, and the route
+is 2 -> 3 -> 5. The route costs 10 and takes two moves; those two metrics
+are shown in the GUI and benchmark tables, not added to the required CLI
+output. Quote input paths containing spaces. No `--explain` option is used.
+
+## Graphical interface
+
+Start the viewer, optionally selecting an input and method:
+
+```text
+python gui.py
+python gui.py tests/cases/test01_spec_example.txt AS
+python gui.py tests/cases/test13_large_grid.txt AS
+```
+
+1. Select a **Problem file**, or use **Browse...** for another input.
+2. Select a **Search method**, then click **Run**.
+3. Use **Play** to replay expansions or **Step** to advance one expansion.
+4. Use **Back**, **Reset**, and the speed control to inspect the replay.
+5. Click **Show result** to highlight the final route immediately.
+
+For AS on case 13, the expected route is
+`1 -> 6 -> 7 -> 12 -> 13 -> 18 -> 19 -> 24 -> 25`, with cost **17**.
+The expansion log records actual search expansions; it is different from
+the count of all created search nodes. Visit-all runs also show which
+destinations have been visited at each recorded expansion.
+
+The GUI computes the search before replaying it. A large search can take
+time; after 100,000 recorded expansions it stops tracing and suggests using
+the CLI. This animation limit does not apply to `search.py` and does not
+mean that the graph has no solution. For a Tkinter installation check, run
+`python -m tkinter`.
+
+## Visit all destinations research
+
+The `ALL` method finds a lowest-cost route visiting **every** destination.
+It uses A* on `(location, visited destinations)` states, with a scaled
+nearest-destination plus minimum-spanning-tree heuristic by default.
+A location may legitimately be visited more than once.
+
+```text
+python search.py tests/cases/test01_spec_example.txt ALL
+python search.py tests/visit_all_cases/all01_dead_end.txt ALL
+python gui.py tests/visit_all_cases/all01_dead_end.txt ALL
+```
+
+The required methods are also available on the visit-all state space:
+
+```text
+python search.py tests/visit_all_cases/all01_dead_end.txt BFS-ALL
+python search.py tests/visit_all_cases/all01_dead_end.txt CUS1-ALL
+python search.py tests/visit_all_cases/all01_dead_end.txt CUS2-ALL
+```
+
+`DFS-ALL`, `GBFS-ALL` and `AS-ALL` are also supported. `BFS-ALL`,
+`CUS1-ALL` and `CUS2-ALL` target fewest moves; `AS-ALL` and `ALL` target
+lowest cost. DFS/GBFS variants do not guarantee an optimum. The second
+output line identifies the final destination reached, and the route can
+repeat locations. These methods can be selected in the GUI as well.
+
+The wrapper for the `-ALL` methods constructs reachable augmented states
+before searching. Up to `V * 2^k` states are possible for V locations and k
+destinations, so this can consume substantial time and memory. Its reported
+search-node count excludes wrapper preparation and output-path conversion.
+The GUI trace cap does not bound that preprocessing work.
+
+Run the dedicated research experiments with:
+
+```text
+python research_visit_all.py
+```
+
+This writes `results/visit_all.md` and `results/visit_all.json`, comparing
+MST, farthest-destination and zero heuristics, simpler baseline approaches,
+and growth as destinations are added. Research timings use five runs per
+measurement; the required-method benchmark uses thirty.
 
 ## Project layout
 
@@ -63,18 +170,18 @@ python -m unittest discover tests
 | `tests/visit_all_cases/` | Test maps for the research extension | done |
 | `run_tests.py` | Batch runner / results table | done |
 | `benchmark_report.py` | Verifies all 90 runs against reference answers and times them | done |
-| `tests/` | 80 unit tests (`python -m unittest discover tests`) | all passing |
-| `tests/cases/expected_results.json` | Locked goal / number_of_nodes / path for all 90 runs | regenerate with `python tests/update_expected_results.py` |
+| `tests/` | 92 unit tests (`python -m unittest discover tests`) | passed on 25 October 2026 |
+| `tests/cases/expected_results.json` | Locked goal / number_of_nodes / path for all 90 runs | update only after reviewing an intentional output change |
 
 Each algorithm takes a `RouteProblem` and returns `SearchResult(goal_node_or_None, nodes_created)`.
 CUS1 is IDDFS; CUS2 is IDA* for fewest moves.
 
-## Design decisions (stated in the report)
+## Design decisions to document in the report
 
 - **Tie-breaking (NOTE 2):** children are generated in ascending node id; `PriorityFrontier` breaks
   equal priorities by insertion order (priorities are rounded to 9 decimal places so floating-point
   noise does not break a genuine tie).
-- **Cycles:** BFS keeps a global reached set. All other methods reject a child already on the
+- **Cycles (six required methods):** BFS keeps a global reached set. The other five reject a child already on the
   current path (`node.on_path()`), so a state can still be reached along different branches.
 - **number_of_nodes:** every `Node` created, including the root, children rejected as cycles or
   duplicates, and (for CUS1/CUS2) nodes regenerated in later iterations.
@@ -91,7 +198,7 @@ CUS1 is IDDFS; CUS2 is IDA* for fewest moves.
   - cover page with names, IDs, signatures, contribution statement · TOC · instructions · introduction ·
     features/bugs/missing · testing · insights (with data) · research · conclusion ·
     acknowledgements/resources (incl. AI use) · references · captioned figures/tables · page numbers
-- [x] Research component: visit ALL destinations via the cheapest route (`ALL`, report section 6.4) (10)
+- [x] Research component: visit ALL destinations via the cheapest route (`ALL`; describe the experiments and findings in the report) (10)
 - [x] Clean, commented code (up to −10 otherwise)
 - [ ] At least two in-class progress meetings with the tutor, a week apart (`COS30019_a2_MeetingRecordForm.docx`)
 - [ ] Who-did-what form (`COS30019 - Who did What.docx`)
@@ -187,3 +294,28 @@ Timing is the median of 30 runs after a warm-up, excluding input parsing.
 The Markdown summary records interpretation limits and selected comparisons.
 
 The earlier Word report draft predates the IDDFS/IDA* replacements. Its custom-method descriptions and measured comparisons need revision before submission.
+
+## Keeping test and report evidence consistent
+
+The full suite passed **92 tests on 25 October 2026**. The standard-case
+regression test locks the goal, node count and path for all 90 runs in
+`tests/cases/expected_results.json`. A change to these outputs should be
+investigated before updating the baseline. For an intentional, verified
+change, run `python tests/update_expected_results.py`, rerun the tests,
+and regenerate affected report results.
+
+`python benchmark_report.py` writes the required-method results to
+`results/benchmark.json` and `results/comparison.md`. Re-running it changes
+timing measurements; use one identified measurement run consistently in
+the report. The full suite also checks visit-all and tracing behaviour.
+Automated checks do not replace visual inspection of the GUI screenshots.
+
+Optional report charts can be generated with
+`python research/make_report_charts.py` after their input evidence exists.
+This chart script needs Matplotlib (`python -m pip install matplotlib`);
+Matplotlib is not required for search.py, gui.py or the unit tests.
+
+Before submission, ensure the report describes IDDFS/IDA*, the implemented
+visit-all extension and the current test count. Statements that the
+visit-all feature is only proposed are now outdated. Complete the actual
+team details, contributions, signatures and AI-use acknowledgement.
